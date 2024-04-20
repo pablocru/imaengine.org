@@ -1,0 +1,19 @@
+---
+export type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
+---
+
+{/* Primary Meta Tags */}
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+{/* Canonical URL */}
+<link rel="canonical" href={Astro.url} />
+
+{/* Improve crawlers index */}
+<link rel="sitemap" href="/sitemap-index.xml" />
