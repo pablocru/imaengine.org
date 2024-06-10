@@ -23,11 +23,13 @@ const {
     <title>{pagetitle}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
     <SeoTags
       seoDescription={seoDescription || pagetitle}
       seoTitle={seoTitle || pagetitle}
     />
+
+    {/* Identify Astro and its version as the framework used to generate this site */}
+    <meta name="generator" content={Astro.generator} />
   </head>
   <body>
     <slot />
