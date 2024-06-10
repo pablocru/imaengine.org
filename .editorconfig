@@ -1,0 +1,16 @@
+# Top-most EditorConfig file
+root = true
+
+# Common configuration for all files
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 2
+max_line_length = 90
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Exclude some specific files and directories
+[**.md]
+trim_trailing_whitespace = false
