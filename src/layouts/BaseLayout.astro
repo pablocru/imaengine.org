@@ -1,6 +1,6 @@
 ---
 import "@styles/fonts.css";
-import SeoMetaTags, { type Props as SeoTagsProps } from "@components/SeoMetaTags.astro";
+import SeoTags, { type Props as SeoTagsProps } from "@components/SeoTags.astro";
 
 interface Props extends SeoTagsProps {
   pagetitle: string;
@@ -17,7 +17,7 @@ const { seoDescription, seoTitle, pagetitle } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <SeoMetaTags seoDescription={seoDescription} seoTitle={seoTitle} />
+    <SeoTags seoDescription={seoDescription} seoTitle={seoTitle} />
   </head>
   <body>
     <slot />
