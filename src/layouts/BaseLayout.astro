@@ -2,11 +2,18 @@
 import "@styles/fonts.css";
 import SeoTags, { type Props as SeoTagsProps } from "@components/SeoTags.astro";
 
-interface Props extends SeoTagsProps {
-  pagetitle: string;
+interface Props extends Partial<SeoTagsProps> {
+  pagetitle?: string;
 }
 
-const { seoDescription, seoTitle, pagetitle } = Astro.props;
+const defaultDescription =
+  "Website to discuss about the latest technologies about manufacturing.";
+
+const {
+  pagetitle = "Imaengine",
+  seoDescription = defaultDescription,
+  seoTitle,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -17,7 +24,10 @@ const { seoDescription, seoTitle, pagetitle } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <SeoTags seoDescription={seoDescription} seoTitle={seoTitle} />
+    <SeoTags
+      seoDescription={seoDescription || pagetitle}
+      seoTitle={seoTitle || pagetitle}
+    />
   </head>
   <body>
     <slot />
