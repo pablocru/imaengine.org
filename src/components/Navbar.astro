@@ -1,0 +1,182 @@
+---
+import Menu from "./icons/Menu.astro";
+
+/**
+ * - [0] - Page name
+ * - [1] - Page path
+ */
+const routes = [
+  ["Who we are", "/about"],
+  ["Industries", "/industries"],
+  ["Resources", "/resources"],
+];
+
+/*
+  The AND operator (&&) used in an Astro template will return the actual value of the fist
+  hand of the expression if it is falsy. So if the array "routes" is empty, a 0 will be
+  printed. To avoid that, using the double exclamation mark (!!) will cast it to boolean.
+  That is useful because Astro won't print "false" in the UI.
+*/
+const isFilled = !!routes.find(isFilledRoute);
+
+/** Checks if a given route's page name and page path are strings with content */
+function isFilledRoute(route: any[]): boolean {
+  return route.every((item) => typeof item === "string" && !!item.trim().length);
+}
+---
+
+<nav id="main-menu">
+  <ul>
+    <li class="brand"><a href="/">Imaengine</a></li>
+    {
+      // The switch button is not needed if there isn't any navigation link
+      isFilled && (
+        <li class="switch-navigation">
+          <Menu />
+        </li>
+      )
+    }
+  </ul>
+  {
+    isFilled && (
+      <ul class="navigation">
+        {
+          // Use a reducer to skip any route that doesn't follow the schema
+          routes.reduce((accumulator, route) => {
+            if (isFilledRoute(route)) {
+              const [pageName, pagePath] = route as string[];
+
+              accumulator.push(
+                <li>
+                  <a href={pagePath}>{pageName}</a>
+                </li>,
+              );
+            }
+
+            return accumulator;
+          }, [])
+        }
+      </ul>
+    )
+  }
+</nav>
+
+<style>
+  nav {
+    /* Add space inside the block */
+    padding: 1.5em 1em;
+
+    /* Display a simple shadow to separate nav visually */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Remove default list style */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li.switch-navigation {
+    /* Remove the switch from the UI */
+    display: none;
+
+    /* Place it at the right */
+    float: right;
+
+    /* Change the cursor to help the user to identify it as a button */
+    cursor: pointer;
+  }
+
+  /* Styles applied on bigger screens */
+  @media (min-width: 560px) {
+    /* Place list and items in a single line */
+    ul,
+    li {
+      display: inline-block;
+    }
+
+    /* Move navigation links to the right */
+    .navigation {
+      float: right;
+    }
+
+    /* Leave space between navigation links */
+    .navigation li:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+
+  /* Styles applied on smaller */
+  @media (max-width: 560px) {
+    li.brand {
+      /* Place brand item and the switch button in a single line */
+      display: inline-block;
+    }
+
+    ul.navigation {
+      /* Leave space between brand link and navigation links */
+      margin-top: 1em;
+    }
+  }
+</style>
+
+<script>
+  import { setupEventListener } from "../utils/events-factory";
+  import { setupDropdown } from "../utils/dropdown-factory";
+
+  // Store
+  const navbar = document.querySelector("nav#main-menu");
+  const switchNavigation = document.querySelector("li.switch-navigation");
+  const navigationLinks = document.querySelector("ul.navigation");
+
+  // Continue only if they are present
+  if (
+    navbar instanceof HTMLElement &&
+    switchNavigation instanceof HTMLElement &&
+    navigationLinks instanceof HTMLElement
+  ) {
+    const dropdownNavbar = setupDropdownNavbar(
+      switchNavigation,
+      navigationLinks,
+      navbar,
+    );
+
+    // This function must be executed at the very beginning
+    dropdownNavbar();
+
+    // Recall it each time the screen gets resized
+    window.addEventListener("resize", dropdownNavbar);
+
+    function setupDropdownNavbar(
+      switchNavigation: HTMLElement,
+      navigationLinks: HTMLElement,
+      navbar: HTMLElement,
+    ) {
+      // Provides a way to create and remove the toggle event
+      const { addEvent, removeEvent } = setupEventListener(
+        switchNavigation,
+        "click",
+        setupDropdown(navigationLinks, navbar),
+      );
+
+      return () => {
+        if (document.documentElement.clientWidth < 560) {
+          // Remove or modify elements in the UI to create the dropdown menu
+          switchNavigation.style.display = "inline-block";
+          navigationLinks.style.display = "none";
+
+          // Add Toggle Event Listener
+          addEvent();
+        } else {
+          // Reset styles
+          switchNavigation.style.display = "none";
+          navigationLinks.style.display = "inline-block";
+
+          // Remove Toggle Event Listener
+          removeEvent();
+        }
+      };
+    }
+  }
+</script>

@@ -1,6 +1,7 @@
 ---
 import "@styles/fonts.css";
 import SeoTags, { type Props as SeoTagsProps } from "@components/SeoTags.astro";
+import Navbar from "@components/Navbar.astro";
 
 interface Props extends Partial<SeoTagsProps> {
   pagetitle?: string;
@@ -35,6 +36,7 @@ const {
     <meta name="generator" content={Astro.generator} />
   </head>
   <body>
+    <Navbar />
     <slot />
   </body>
 </html>
