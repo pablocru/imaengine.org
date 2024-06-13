@@ -4,14 +4,14 @@ import SeoTags, { type Props as SeoTagsProps } from "@components/SeoTags.astro";
 import Navbar from "@components/Navbar.astro";
 
 interface Props extends Partial<SeoTagsProps> {
-  pagetitle?: string;
+  pageTitle?: string;
 }
 
 const defaultDescription =
   "Website to discuss about the latest technologies about manufacturing.";
 
 const {
-  pagetitle = "Imaengine",
+  pageTitle = "Imaengine",
   seoDescription = defaultDescription,
   seoTitle,
 } = Astro.props;
@@ -22,14 +22,14 @@ const {
   <head>
     {/* Minimum head tags that should be present */}
     <meta charset="UTF-8" />
-    <title>{pagetitle}</title>
+    <title>{pageTitle}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {/* SEO related head tags */}
     <SeoTags
-      seoDescription={seoDescription || pagetitle}
-      seoTitle={seoTitle || pagetitle}
+      seoDescription={seoDescription || pageTitle}
+      seoTitle={seoTitle || pageTitle}
     />
 
     {/* Identify Astro and its version as the framework used to generate this site */}
