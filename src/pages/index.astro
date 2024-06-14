@@ -1,7 +1,12 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { getEntry } from "astro:content";
+
+const {
+  data: { pageTitle },
+} = await getEntry("homePage", "index");
 ---
 
 <BaseLayout>
-  <h1>Hello Imaengine</h1>
+  <h1>{pageTitle}</h1>
 </BaseLayout>

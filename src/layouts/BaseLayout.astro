@@ -3,18 +3,18 @@ import "@styles/fonts.css";
 import "@styles/reset.css";
 import SeoTags, { type Props as SeoTagsProps } from "@components/SeoTags.astro";
 import Navbar from "@components/Navbar.astro";
+import { getEntry } from "astro:content";
 
 interface Props extends Partial<SeoTagsProps> {
   pageTitle?: string;
 }
 
-const defaultDescription =
-  "Website to discuss about the latest technologies about manufacturing.";
+const { data: homePage } = await getEntry("homePage", "index");
 
 const {
-  pageTitle = "Imaengine",
-  seoDescription = defaultDescription,
-  seoTitle,
+  pageTitle = homePage.tabTitle,
+  seoDescription = homePage.seoDescription,
+  seoTitle = homePage.seoTitle,
 } = Astro.props;
 ---
 
@@ -28,10 +28,7 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {/* SEO related head tags */}
-    <SeoTags
-      seoDescription={seoDescription || pageTitle}
-      seoTitle={seoTitle || pageTitle}
-    />
+    <SeoTags seoDescription={seoDescription} seoTitle={seoTitle} />
 
     {/* Identify Astro and its version as the framework used to generate this site */}
     <meta name="generator" content={Astro.generator} />
