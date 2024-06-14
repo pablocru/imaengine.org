@@ -6,13 +6,13 @@ import Navbar from "@components/Navbar.astro";
 import { getEntry } from "astro:content";
 
 interface Props extends Partial<SeoTagsProps> {
-  pageTitle?: string;
+  tabTitle?: string;
 }
 
 const { data: homePage } = await getEntry("homePage", "index");
 
 const {
-  pageTitle = homePage.tabTitle,
+  tabTitle = homePage.tabTitle,
   seoDescription = homePage.seoDescription,
   seoTitle = homePage.seoTitle,
 } = Astro.props;
@@ -23,7 +23,7 @@ const {
   <head>
     {/* Minimum head tags that should be present */}
     <meta charset="UTF-8" />
-    <title>{pageTitle}</title>
+    <title>{tabTitle}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
