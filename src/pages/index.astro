@@ -1,13 +1,5 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { getEntry } from "astro:content";
-
-const {
-  data: { seoDescription, seoTitle, tabTitle, pageDescription, pageTitle },
-} = await getEntry("homePage", "index");
+import StaticPageLayout from "@layouts/StaticPageLayout.astro";
 ---
 
-<BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
-  <h1>{pageTitle}</h1>
-  <p>{pageDescription}</p>
-</BaseLayout>
+<StaticPageLayout section="index" />
