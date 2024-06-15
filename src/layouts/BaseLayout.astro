@@ -1,21 +1,14 @@
 ---
 import "@styles/fonts.css";
 import "@styles/reset.css";
-import SeoTags, { type Props as SeoTagsProps } from "@components/SeoTags.astro";
 import Navbar from "@components/Navbar.astro";
-import { getEntry } from "astro:content";
+import SeoTags, { type Props as SeoTagsProps } from "@components/SeoTags.astro";
 
-interface Props extends Partial<SeoTagsProps> {
-  tabTitle?: string;
+interface Props extends SeoTagsProps {
+  tabTitle: string;
 }
 
-const { data: homePage } = await getEntry("homePage", "index");
-
-const {
-  tabTitle = homePage.tabTitle,
-  seoDescription = homePage.seoDescription,
-  seoTitle = homePage.seoTitle,
-} = Astro.props;
+const { seoDescription, seoTitle, tabTitle } = Astro.props;
 ---
 
 <!doctype html>

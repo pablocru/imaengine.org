@@ -3,11 +3,11 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import { getEntry } from "astro:content";
 
 const {
-  data: { pageDescription, pageTitle },
+  data: { seoDescription, seoTitle, tabTitle, pageDescription, pageTitle },
 } = await getEntry("homePage", "index");
 ---
 
-<BaseLayout>
+<BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
   <h1>{pageTitle}</h1>
   <p>{pageDescription}</p>
 </BaseLayout>
