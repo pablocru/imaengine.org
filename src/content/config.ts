@@ -13,5 +13,9 @@ export const collections = {
     schema: z.object({
       pageDescription: z.string(),
     }).and(pageSchema)
+  }),
+  staticPage: defineCollection({
+    type: "data",
+    schema: pageSchema
   })
 };
