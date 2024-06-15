@@ -1,0 +1,21 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { type CollectionEntry } from "astro:content";
+
+export interface Props {
+  entry: CollectionEntry<"blogIndustries" | "blogResources">;
+}
+
+const {
+  entry: {
+    data: { seoDescription, seoTitle, tabTitle },
+    render,
+  },
+} = Astro.props;
+
+const { Content } = await render();
+---
+
+<BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
+  <Content />
+</BaseLayout>
