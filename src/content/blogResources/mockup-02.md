@@ -3,7 +3,9 @@ tabTitle: Resources Post Template
 seoTitle: Resources Post Template for Software Development
 seoDescription: >-
   This is a sample template for resources blog posts. Use this mockup to create structured
-  and consistent content for IIoT software development.
+  and consistent content for IIoT software development
+relatedPosts:
+  - mockup-01
 ---
 
 # Resources Post Template

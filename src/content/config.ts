@@ -1,4 +1,10 @@
-import { z, defineCollection } from "astro:content";
+import {
+  z,
+  defineCollection,
+  reference,
+  type CollectionEntry,
+  type ValidContentEntrySlug
+} from "astro:content";
 
 const pageSchema = z.object({
   seoDescription: z.string().min(60).max(155),
@@ -11,16 +17,27 @@ const staticPageSchema = z.object({
   pageTitle: z.string(),
 }).and(pageSchema);
 
-const blogCollection = defineCollection({
+const blogCollection = (
+  postCategories: string[],
+  relatedCollection: BlogCollection,
+) => defineCollection({
   type: "content",
-  schema: pageSchema
+  schema: z.object({
+    categories: z.array(z.string()).default(postCategories),
+    relatedPosts: z.array(reference(relatedCollection)).default([]),
+    isDraft: z.boolean().default(true),
+  }).and(pageSchema)
 });
+
+export type BlogCollection = "blogIndustries" | "blogResources";
+export type BlogCollectionEntry = CollectionEntry<BlogCollection>;
+export type ValidBlogSlug = ValidContentEntrySlug<BlogCollection>;
 
 export const collections = {
   staticPage: defineCollection({
     type: "data",
     schema: staticPageSchema
   }),
-  blogIndustries: blogCollection,
-  blogResources: blogCollection,
+  blogIndustries: blogCollection(["industries"], "blogIndustries"),
+  blogResources: blogCollection(["resources"], "blogResources"),
 };

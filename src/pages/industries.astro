@@ -1,5 +1,8 @@
 ---
 import StaticPageLayout from "@layouts/StaticPageLayout.astro";
+import UniversalFeed from "@components/UniversalFeed.astro";
 ---
 
-<StaticPageLayout section="industries" />
+<StaticPageLayout section="industries">
+  <UniversalFeed collection="blogIndustries" />
+</StaticPageLayout>

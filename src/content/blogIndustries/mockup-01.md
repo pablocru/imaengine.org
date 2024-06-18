@@ -1,9 +1,11 @@
 ---
-tabTitle: Industries Post Template | Example for Future Articles
-seoTitle: Industries Post Template for Industries
+tabTitle: Industries Post Template
+seoTitle: Industries Post Template | Example for Future Articles
 seoDescription: >-
   This is a sample template for industries blog posts. Use this mockup to create
-  structured and consistent content for IIoT and industrial technology.
+  structured and consistent content for IIoT and industrial technology
+relatedPosts:
+  - mockup-02
 ---
 
 # Industries Post Template

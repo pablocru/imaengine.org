@@ -1,0 +1,16 @@
+---
+import type { BlogCollectionEntry } from "@content/config";
+
+interface Props {
+  post: BlogCollectionEntry;
+}
+
+const {
+  post: {
+    slug,
+    data: { categories, tabTitle },
+  },
+} = Astro.props;
+---
+
+<a href={`/${categories.join("/")}/${slug}`}>{tabTitle}</a>

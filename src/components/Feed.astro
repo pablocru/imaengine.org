@@ -1,0 +1,22 @@
+---
+import Card from "./Card.astro";
+import type { BlogCollectionEntry } from "@content/config";
+
+interface Props {
+  entry: BlogCollectionEntry[];
+}
+
+const { entry } = Astro.props;
+---
+
+<nav>
+  <ul>
+    {
+      entry.map((post) => (
+        <li>
+          <Card post={post} />
+        </li>
+      ))
+    }
+  </ul>
+</nav>

@@ -1,0 +1,34 @@
+---
+import { getBlogCollection } from "@utils/get-static-paths-filtered";
+import Feed from "./Feed.astro";
+import type { BlogCollection } from "@content/config";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  collection?: BlogCollection;
+}
+
+const { collection } = Astro.props;
+
+async function getFeed(collection?: BlogCollection) {
+  if (collection) return await getBlogCollection(collection);
+
+  const validCollections: BlogCollection[] = ["blogIndustries", "blogResources"];
+  const feed: CollectionEntry<BlogCollection>[] = [];
+  for (const collection of validCollections) {
+    feed.push(...(await getBlogCollection(collection)));
+  }
+  return feed;
+}
+
+const feed = await getFeed(collection);
+---
+
+{
+  !!feed.length && (
+    <section>
+      <h2>Feed</h2>
+      <Feed entry={feed} />
+    </section>
+  )
+}
