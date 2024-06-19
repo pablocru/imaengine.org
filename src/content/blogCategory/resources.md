@@ -8,4 +8,4 @@ seoDescription: >-
 ---
 
 Explore our collection of software development tools, tutorials, and insights for IIoT
-and industry digitalization
+and industry digitalization.
