@@ -3,14 +3,14 @@ import { getBlogEntries } from "@utils/get-static-paths-filtered";
 import { getEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Feed from "./Feed.astro";
-import type { BlogCollectionEntry } from "@content/config";
+import type { BlogPostEntry } from "@content/config";
 
 export interface Props {
-  entry: BlogCollectionEntry;
+  post: BlogPostEntry;
 }
 
 const {
-  entry: {
+  post: {
     data: { author, relatedPosts, seoDescription, seoTitle, tabTitle },
     render,
   },
@@ -40,7 +40,7 @@ const {
     !!filteredPosts.length && (
       <aside class="relatedPost">
         <h2>You might also like</h2>
-        <Feed entry={filteredPosts} />
+        <Feed posts={filteredPosts} />
       </aside>
     )
   }

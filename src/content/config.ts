@@ -17,10 +17,10 @@ const staticPageSchema = z.object({
   pageTitle: z.string(),
 }).and(pageSchema);
 
-export type BlogCollection = "blogPost";
-export type BlogCollectionEntry = CollectionEntry<BlogCollection>;
-export type ValidBlogSlug = ValidContentEntrySlug<BlogCollection>;
-export type ValidBlogCategories = ValidContentEntrySlug<"blogCategory">;
+export type BlogPostCollection = "blogPost";
+export type BlogPostEntry = CollectionEntry<BlogPostCollection>;
+export type ValidBlogSlug = ValidContentEntrySlug<BlogPostCollection>;
+export type ValidBlogCategory = ValidContentEntrySlug<"blogCategory">;
 
 export const collections = {
   staticPage: defineCollection({

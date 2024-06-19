@@ -1,8 +1,8 @@
 import { getCollection, getEntries } from "astro:content";
-import type { BlogCollection, BlogCollectionEntry, ValidBlogSlug } from "@content/config";
+import type { BlogPostCollection, BlogPostEntry, ValidBlogSlug } from "@content/config";
 
-export function filterPostsCondition(entry: BlogCollectionEntry) {
-  return !(import.meta.env.PROD && entry.data.isDraft);
+export function filterPostsCondition(post: BlogPostEntry) {
+  return !(import.meta.env.PROD && post.data.isDraft);
 }
 
 export async function getBlogCollection() {
@@ -10,9 +10,9 @@ export async function getBlogCollection() {
 }
 
 export async function getBlogEntries(
-  entries: { collection: BlogCollection, slug: ValidBlogSlug }[]
+  postReferences: { collection: BlogPostCollection, slug: ValidBlogSlug }[]
 ) {
-  const posts = await getEntries(entries);
+  const posts = await getEntries(postReferences);
 
   return posts.filter(filterPostsCondition);
 }

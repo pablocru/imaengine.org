@@ -1,18 +1,18 @@
 ---
 import Card from "./Card.astro";
-import type { BlogCollectionEntry } from "@content/config";
+import type { BlogPostEntry } from "@content/config";
 
 interface Props {
-  entry: BlogCollectionEntry[];
+  posts: BlogPostEntry[];
 }
 
-const { entry } = Astro.props;
+const { posts } = Astro.props;
 ---
 
 <nav>
   <ul>
     {
-      entry.map((post) => (
+      posts.map((post) => (
         <li>
           <Card post={post} />
         </li>

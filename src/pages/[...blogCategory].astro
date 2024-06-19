@@ -6,14 +6,14 @@ import UniversalFeed from "@components/UniversalFeed.astro";
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blogCategory");
 
-  return blogEntries.map((entry) => ({
-    params: { blogCategory: entry.slug },
-    props: { entry },
+  return blogEntries.map((category) => ({
+    params: { blogCategory: category.slug },
+    props: { category },
   }));
 }
 
 const {
-  entry: {
+  category: {
     slug,
     data: { seoDescription, seoTitle, tabTitle, title },
     render,

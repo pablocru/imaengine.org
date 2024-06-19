@@ -2,10 +2,10 @@
 import { filterPostsCondition } from "@utils/get-static-paths-filtered";
 import { getCollection } from "astro:content";
 import Feed from "./Feed.astro";
-import type { ValidBlogCategories } from "@content/config";
+import type { ValidBlogCategory } from "@content/config";
 
 interface Props {
-  category?: ValidBlogCategories;
+  category?: ValidBlogCategory;
 }
 
 const { category } = Astro.props;
@@ -21,7 +21,7 @@ const feed = await getCollection(
   !!feed.length && (
     <section>
       <h2>Feed</h2>
-      <Feed entry={feed} />
+      <Feed posts={feed} />
     </section>
   )
 }
