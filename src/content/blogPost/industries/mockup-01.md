@@ -1,4 +1,5 @@
 ---
+title: Industries Post Template
 tabTitle: Industries Post Template
 seoTitle: Industries Post Template | Example for Future Articles
 seoDescription: >-
@@ -8,10 +9,6 @@ relatedPosts:
   - industries/mockup-02
 author: alvaro
 ---
-
-# Industries Post Template
-
-## Introduction
 
 Start with an engaging introduction that outlines the main topic of your article. Briefly
 introduce the subject and highlight its relevance to the industries and IIoT.

@@ -1,4 +1,5 @@
 ---
+title: Resources Post Template
 tabTitle: Resources Post Template
 seoTitle: Resources Post Template for Software Development
 seoDescription: >-
@@ -8,10 +9,6 @@ relatedPosts:
   - industries/mockup-01
 author: pablo
 ---
-
-# Resources Post Template
-
-## Introduction
 
 Provide a brief introduction to the topic covered in the resource post. Highlight its
 relevance to IIoT software development and industry digitalization.

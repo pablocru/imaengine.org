@@ -1,4 +1,5 @@
 ---
+title: Current Trends in IIoT Adoption
 tabTitle: Current Trends in IIoT Adoption
 seoTitle: Current Trends in IIoT Adoption | Industry Insights
 seoDescription: >-
@@ -8,10 +9,6 @@ relatedPosts:
   - resources/mockup-01
 author: alvaro
 ---
-
-# Current Trends in IIoT Adoption
-
-## Introduction
 
 This article explores the latest trends in the adoption of Industrial Internet of Things
 (IIoT) technologies across various industries. It examines how emerging technologies are

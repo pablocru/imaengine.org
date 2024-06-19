@@ -1,4 +1,5 @@
 ---
+title: Advanced IIoT Programming Techniques
 tabTitle: Advanced IIoT Programming Techniques
 seoTitle: Advanced IIoT Programming Techniques | In-Depth Guide
 seoDescription: >-
@@ -8,10 +9,6 @@ relatedPosts:
   - resources/mockup-02
 author: pablo
 ---
-
-# Advanced IIoT Programming Techniques
-
-## Introduction
 
 This article delves into advanced programming techniques specifically for IIoT
 applications. We'll cover best practices, cutting-edge tools, and methodologies to

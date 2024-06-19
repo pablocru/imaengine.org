@@ -11,12 +11,12 @@ interface Props {
 const { section } = Astro.props;
 
 const {
-  data: { pageDescription, pageTitle, seoDescription, seoTitle, tabTitle },
+  data: { pageDescription, seoDescription, seoTitle, tabTitle, title },
 } = await getEntry(COLLECTION, section);
 ---
 
 <BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
-  <h1>{pageTitle}</h1>
+  <h1>{title}</h1>
   <p>{pageDescription}</p>
   <slot />
 </BaseLayout>

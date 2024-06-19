@@ -7,14 +7,14 @@ import {
 } from "astro:content";
 
 const pageSchema = z.object({
-  seoDescription: z.string().min(60).max(155),
-  seoTitle: z.string().min(30).max(60),
+  title: z.string(),
   tabTitle: z.string(),
+  seoTitle: z.string().min(30).max(60),
+  seoDescription: z.string().min(60).max(155),
 });
 
 const staticPageSchema = z.object({
   pageDescription: z.string(),
-  pageTitle: z.string(),
 }).and(pageSchema);
 
 export type BlogPostCollection = "blogPost";
@@ -46,8 +46,6 @@ export const collections = {
   }),
   blogCategory: defineCollection({
     type: "content",
-    schema: z.object({
-      title: z.string(),
-    }).and(pageSchema)
+    schema: pageSchema
   }),
 };

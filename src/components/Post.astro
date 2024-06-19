@@ -11,7 +11,7 @@ export interface Props {
 
 const {
   post: {
-    data: { author, relatedPosts, seoDescription, seoTitle, tabTitle },
+    data: { author, relatedPosts, seoDescription, seoTitle, tabTitle, title },
     render,
   },
 } = Astro.props;
@@ -27,6 +27,7 @@ const {
 
 <BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
   <main>
+    <h1>{title}</h1>
     <Content />
   </main>
   <aside class="postAuthor">
