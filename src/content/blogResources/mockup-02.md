@@ -6,6 +6,7 @@ seoDescription: >-
   and consistent content for IIoT software development
 relatedPosts:
   - mockup-01
+author: pablo
 ---
 
 # Resources Post Template

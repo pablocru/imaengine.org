@@ -26,6 +26,7 @@ const blogCollection = (
     categories: z.array(z.string()).default(postCategories),
     relatedPosts: z.array(reference(relatedCollection)).default([]),
     isDraft: z.boolean().default(true),
+    author: reference("author")
   }).and(pageSchema)
 });
 
@@ -37,6 +38,15 @@ export const collections = {
   staticPage: defineCollection({
     type: "data",
     schema: staticPageSchema
+  }),
+  author: defineCollection({
+    type: "data",
+    schema: z.object({
+      name: z.string(),
+      label: z.string(),
+      description: z.string(),
+      linkedIn: z.string().url()
+    })
   }),
   blogIndustries: blogCollection(["industries"], "blogIndustries"),
   blogResources: blogCollection(["resources"], "blogResources"),

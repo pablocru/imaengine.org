@@ -6,6 +6,7 @@ seoDescription: >-
   practices and tools to enhance your IIoT software development
 relatedPosts:
   - mockup-02
+author: pablo
 ---
 
 # Advanced IIoT Programming Techniques

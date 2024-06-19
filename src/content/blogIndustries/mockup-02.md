@@ -6,6 +6,7 @@ seoDescription: >-
   cutting-edge technologies are transforming the industrial landscape
 relatedPosts:
   - mockup-01
+author: alvaro
 ---
 
 # Current Trends in IIoT Adoption

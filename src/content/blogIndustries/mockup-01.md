@@ -6,6 +6,7 @@ seoDescription: >-
   structured and consistent content for IIoT and industrial technology
 relatedPosts:
   - mockup-02
+author: alvaro
 ---
 
 # Industries Post Template

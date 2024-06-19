@@ -1,5 +1,6 @@
 ---
 import { getBlogEntries } from "@utils/get-static-paths-filtered";
+import { getEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Feed from "./Feed.astro";
 import type { BlogCollectionEntry } from "@content/config";
@@ -10,7 +11,7 @@ export interface Props {
 
 const {
   entry: {
-    data: { seoDescription, seoTitle, tabTitle, relatedPosts },
+    data: { author, relatedPosts, seoDescription, seoTitle, tabTitle },
     render,
   },
 } = Astro.props;
@@ -18,12 +19,23 @@ const {
 const { Content } = await render();
 
 const filteredPosts = await getBlogEntries(relatedPosts);
+
+const {
+  data: { description, label, linkedIn, name },
+} = await getEntry(author);
 ---
 
 <BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
   <main>
     <Content />
   </main>
+  <aside class="postAuthor">
+    <h2>About the author</h2>
+    <h3>{name}</h3>
+    <h4>{label}</h4>
+    <p>{description}</p>
+    <a href={linkedIn}>Read more in LinkedIn</a>
+  </aside>
   {
     !!filteredPosts.length && (
       <aside class="relatedPost">
