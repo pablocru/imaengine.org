@@ -1,10 +1,8 @@
 ---
-import { getPostPathsFiltered } from "src/utils/get-static-paths-filtered";
+import { getPostPathsFiltered } from "@utils/get-static-paths-filtered";
 import Post, { type Props } from "@components/Post.astro";
 
-export async function getStaticPaths() {
-  return await getPostPathsFiltered("blogResources");
-}
+export const getStaticPaths = await getPostPathsFiltered("blogResources");
 ---
 
 <Post entry={Astro.props.entry} />

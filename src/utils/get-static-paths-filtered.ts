@@ -20,7 +20,7 @@ export async function getBlogEntries(
 export async function getPostPathsFiltered(collection: BlogCollection) {
   const blogEntries = await getCollection(collection, filterPostsCondition);
 
-  return blogEntries.map((entry) => ({
+  return () => blogEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
