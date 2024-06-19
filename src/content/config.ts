@@ -17,22 +17,10 @@ const staticPageSchema = z.object({
   pageTitle: z.string(),
 }).and(pageSchema);
 
-const blogCollection = (
-  postCategories: string[],
-  relatedCollection: BlogCollection,
-) => defineCollection({
-  type: "content",
-  schema: z.object({
-    categories: z.array(z.string()).default(postCategories),
-    relatedPosts: z.array(reference(relatedCollection)).default([]),
-    isDraft: z.boolean().default(true),
-    author: reference("author")
-  }).and(pageSchema)
-});
-
-export type BlogCollection = "blogIndustries" | "blogResources";
+export type BlogCollection = "blogPost";
 export type BlogCollectionEntry = CollectionEntry<BlogCollection>;
 export type ValidBlogSlug = ValidContentEntrySlug<BlogCollection>;
+export type ValidBlogCategories = ValidContentEntrySlug<"blogCategory">;
 
 export const collections = {
   staticPage: defineCollection({
@@ -48,6 +36,18 @@ export const collections = {
       linkedIn: z.string().url()
     })
   }),
-  blogIndustries: blogCollection(["industries"], "blogIndustries"),
-  blogResources: blogCollection(["resources"], "blogResources"),
+  blogPost: defineCollection({
+    type: "content",
+    schema: z.object({
+      relatedPosts: z.array(reference("blogPost")).default([]),
+      isDraft: z.boolean().default(true),
+      author: reference("author")
+    }).and(pageSchema)
+  }),
+  blogCategory: defineCollection({
+    type: "content",
+    schema: z.object({
+      title: z.string(),
+    }).and(pageSchema)
+  }),
 };

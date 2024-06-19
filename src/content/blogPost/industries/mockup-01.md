@@ -5,7 +5,7 @@ seoDescription: >-
   This is a sample template for industries blog posts. Use this mockup to create
   structured and consistent content for IIoT and industrial technology
 relatedPosts:
-  - mockup-02
+  - industries/mockup-02
 author: alvaro
 ---
 

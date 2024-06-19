@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import UniversalFeed from "@components/UniversalFeed.astro";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blogCategory");
+
+  return blogEntries.map((entry) => ({
+    params: { blogCategory: entry.slug },
+    props: { entry },
+  }));
+}
+
+const {
+  entry: {
+    slug,
+    data: { seoDescription, seoTitle, tabTitle, title },
+    render,
+  },
+} = Astro.props;
+
+const { Content } = await render();
+---
+
+<BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
+  <h1>{title}</h1>
+  <Content />
+  <UniversalFeed category={slug} />
+</BaseLayout>

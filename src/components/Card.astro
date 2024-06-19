@@ -8,9 +8,9 @@ interface Props {
 const {
   post: {
     slug,
-    data: { categories, tabTitle },
+    data: { tabTitle },
   },
 } = Astro.props;
 ---
 
-<a href={`/${categories.join("/")}/${slug}`}>{tabTitle}</a>
+<a href={"/" + slug}>{tabTitle}</a>

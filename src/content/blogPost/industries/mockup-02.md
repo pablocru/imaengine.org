@@ -5,7 +5,7 @@ seoDescription: >-
   Explore the latest trends in IIoT adoption across various industries. Understand how
   cutting-edge technologies are transforming the industrial landscape
 relatedPosts:
-  - mockup-01
+  - resources/mockup-01
 author: alvaro
 ---
 

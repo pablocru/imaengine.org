@@ -5,7 +5,7 @@ seoDescription: >-
   This is a sample template for resources blog posts. Use this mockup to create structured
   and consistent content for IIoT software development
 relatedPosts:
-  - mockup-01
+  - industries/mockup-01
 author: pablo
 ---
 

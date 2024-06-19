@@ -1,0 +1,15 @@
+---
+import { getBlogCollection } from "@utils/get-static-paths-filtered";
+import Post, { type Props } from "@components/Post.astro";
+
+export async function getStaticPaths() {
+  const blogEntries = await getBlogCollection();
+
+  return blogEntries.map((entry) => ({
+    params: { blogPost: entry.slug },
+    props: { entry },
+  }));
+}
+---
+
+<Post entry={Astro.props.entry} />

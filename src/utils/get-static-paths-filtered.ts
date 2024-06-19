@@ -5,8 +5,8 @@ export function filterPostsCondition(entry: BlogCollectionEntry) {
   return !(import.meta.env.PROD && entry.data.isDraft);
 }
 
-export async function getBlogCollection(collection: BlogCollection) {
-  return await getCollection(collection, filterPostsCondition);
+export async function getBlogCollection() {
+  return await getCollection("blogPost", filterPostsCondition);
 }
 
 export async function getBlogEntries(
@@ -15,13 +15,4 @@ export async function getBlogEntries(
   const posts = await getEntries(entries);
 
   return posts.filter(filterPostsCondition);
-}
-
-export async function getPostPathsFiltered(collection: BlogCollection) {
-  const blogEntries = await getCollection(collection, filterPostsCondition);
-
-  return () => blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
 }

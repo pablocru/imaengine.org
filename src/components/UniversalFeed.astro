@@ -1,27 +1,20 @@
 ---
-import { getBlogCollection } from "@utils/get-static-paths-filtered";
+import { filterPostsCondition } from "@utils/get-static-paths-filtered";
+import { getCollection } from "astro:content";
 import Feed from "./Feed.astro";
-import type { BlogCollection } from "@content/config";
-import type { CollectionEntry } from "astro:content";
+import type { ValidBlogCategories } from "@content/config";
 
 interface Props {
-  collection?: BlogCollection;
+  category?: ValidBlogCategories;
 }
 
-const { collection } = Astro.props;
+const { category } = Astro.props;
 
-async function getFeed(collection?: BlogCollection) {
-  if (collection) return await getBlogCollection(collection);
-
-  const validCollections: BlogCollection[] = ["blogIndustries", "blogResources"];
-  const feed: CollectionEntry<BlogCollection>[] = [];
-  for (const collection of validCollections) {
-    feed.push(...(await getBlogCollection(collection)));
-  }
-  return feed;
-}
-
-const feed = await getFeed(collection);
+const feed = await getCollection(
+  "blogPost",
+  (entry) =>
+    filterPostsCondition(entry) && (category ? entry.slug.startsWith(category) : true),
+);
 ---
 
 {
