@@ -13,10 +13,6 @@ const pageSchema = z.object({
   seoDescription: z.string().min(60).max(155),
 });
 
-const staticPageSchema = z.object({
-  pageDescription: z.string(),
-}).and(pageSchema);
-
 export type BlogPostCollection = "blogPost";
 export type BlogPostEntry = CollectionEntry<BlogPostCollection>;
 export type ValidBlogSlug = ValidContentEntrySlug<BlogPostCollection>;
@@ -24,8 +20,8 @@ export type ValidBlogCategory = ValidContentEntrySlug<"blogCategory">;
 
 export const collections = {
   staticPage: defineCollection({
-    type: "data",
-    schema: staticPageSchema
+    type: "content",
+    schema: pageSchema
   }),
   author: defineCollection({
     type: "data",

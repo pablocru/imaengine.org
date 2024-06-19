@@ -1,22 +1,26 @@
 ---
-import { getEntry, type DataEntryMap } from "astro:content";
+import { getEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import type { ValidContentEntrySlug } from "astro:content";
 
 const COLLECTION = "staticPage";
 
 interface Props {
-  section: keyof DataEntryMap[typeof COLLECTION];
+  section: ValidContentEntrySlug<typeof COLLECTION>;
 }
 
 const { section } = Astro.props;
 
 const {
-  data: { pageDescription, seoDescription, seoTitle, tabTitle, title },
+  data: { seoDescription, seoTitle, tabTitle, title },
+  render,
 } = await getEntry(COLLECTION, section);
+
+const { Content } = await render();
 ---
 
 <BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
   <h1>{title}</h1>
-  <p>{pageDescription}</p>
+  <Content />
   <slot />
 </BaseLayout>
