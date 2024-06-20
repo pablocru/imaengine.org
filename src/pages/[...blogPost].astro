@@ -1,6 +1,8 @@
 ---
-import { getBlogCollection } from "@utils/get-static-paths-filtered";
-import Post, { type Props } from "@components/Post.astro";
+import { getBlogCollection, getBlogEntries } from "@utils/get-static-paths-filtered";
+import { getEntry } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Feed from "@components/Feed.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getBlogCollection();
@@ -10,6 +12,41 @@ export async function getStaticPaths() {
     props: { post },
   }));
 }
+
+const {
+  post: {
+    data: { author, relatedPosts, seoDescription, seoTitle, tabTitle, title },
+    render,
+  },
+} = Astro.props;
+
+const { Content } = await render();
+
+const filteredPosts = await getBlogEntries(relatedPosts);
+
+const {
+  data: { description, label, linkedIn, name },
+} = await getEntry(author);
 ---
 
-<Post post={Astro.props.post} />
+<BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
+  <main>
+    <h1>{title}</h1>
+    <Content />
+  </main>
+  <aside class="postAuthor">
+    <h2>About the author</h2>
+    <h3>{name}</h3>
+    <h4>{label}</h4>
+    <p>{description}</p>
+    <a href={linkedIn}>Read more in LinkedIn</a>
+  </aside>
+  {
+    !!filteredPosts.length && (
+      <aside class="relatedPost">
+        <h2>You might also like</h2>
+        <Feed posts={filteredPosts} />
+      </aside>
+    )
+  }
+</BaseLayout>
