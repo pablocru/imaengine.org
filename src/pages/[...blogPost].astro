@@ -3,6 +3,7 @@ import { getBlogCollection, getBlogEntries } from "@utils/get-static-paths-filte
 import { getEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Feed from "@components/Feed.astro";
+import TableOfContent from "@components/TableOfContent/index.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getBlogCollection();
@@ -20,7 +21,7 @@ const {
   },
 } = Astro.props;
 
-const { Content } = await render();
+const { Content, headings } = await render();
 
 const filteredPosts = await getBlogEntries(relatedPosts);
 
@@ -32,6 +33,7 @@ const {
 <BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
   <main>
     <h1>{title}</h1>
+    <TableOfContent headings={headings} />
     <Content />
   </main>
   <aside class="postAuthor">

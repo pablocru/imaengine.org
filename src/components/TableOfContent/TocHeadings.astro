@@ -1,0 +1,24 @@
+---
+import type { TocHeading } from "./build-toc-structure";
+
+interface Props {
+  tocHeadings: TocHeading[];
+}
+
+const { tocHeadings } = Astro.props;
+---
+
+{
+  !!tocHeadings.length && (
+    <nav>
+      <ul>
+        {tocHeadings.map(({ slug, subheadings, text }) => (
+          <li>
+            <a href={"#" + slug}>{text}</a>
+            <Astro.self tocHeadings={subheadings} />
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}

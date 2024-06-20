@@ -1,0 +1,22 @@
+---
+import { buildTocStructure } from "./build-toc-structure";
+import TocHeadings from "./TocHeadings.astro";
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+
+const tocHeadings = buildTocStructure(headings);
+---
+
+{
+  !!tocHeadings.length && (
+    <aside class="tableOfContent">
+      <h2>Table of Content</h2>
+      <TocHeadings tocHeadings={tocHeadings} />
+    </aside>
+  )
+}
