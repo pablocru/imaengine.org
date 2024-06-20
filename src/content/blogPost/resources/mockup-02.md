@@ -15,7 +15,7 @@ relevance to IIoT software development and industry digitalization.
 
 ## Key Sections
 
-### Section 1: Overview
+### Overview
 
 Offer a general overview or background on the topic. Explain why it is important for
 developers working in the IIoT space.
@@ -23,7 +23,7 @@ developers working in the IIoT space.
 - **Bullet Point 1**: Key detail or concept related to the overview.
 - **Bullet Point 2**: Additional relevant detail or context.
 
-### Section 2: Tools & Techniques
+### Tools & Techniques
 
 Discuss the tools, frameworks, or techniques relevant to the topic. Provide insights on
 their application and benefits.
@@ -31,7 +31,7 @@ their application and benefits.
 - **Bullet Point 1**: Description of a tool or technique.
 - **Bullet Point 2**: Example or use case.
 
-### Section 3: Best Practices
+### Best Practices
 
 Highlight best practices for using the discussed tools or techniques in IIoT software
 development. Include tips and recommendations.
