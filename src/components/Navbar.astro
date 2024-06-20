@@ -26,39 +26,41 @@ function isFilledRoute(route: any[]): boolean {
 ---
 
 <nav id="main-menu">
-  <ul>
-    <li class="brand"><a href="/">Imaengine</a></li>
+  <div class="content-centered">
+    <ul>
+      <li class="brand"><a href="/">Imaengine</a></li>
+      {
+        // The switch button is not needed if there isn't any navigation link
+        isFilled && (
+          <li class="switch-navigation">
+            <Menu />
+          </li>
+        )
+      }
+    </ul>
     {
-      // The switch button is not needed if there isn't any navigation link
       isFilled && (
-        <li class="switch-navigation">
-          <Menu />
-        </li>
+        <ul class="navigation">
+          {
+            // Use a reducer to skip any route that doesn't follow the schema
+            routes.reduce((accumulator, route) => {
+              if (isFilledRoute(route)) {
+                const [pageName, pagePath] = route as string[];
+
+                accumulator.push(
+                  <li>
+                    <a href={pagePath}>{pageName}</a>
+                  </li>,
+                );
+              }
+
+              return accumulator;
+            }, [])
+          }
+        </ul>
       )
     }
-  </ul>
-  {
-    isFilled && (
-      <ul class="navigation">
-        {
-          // Use a reducer to skip any route that doesn't follow the schema
-          routes.reduce((accumulator, route) => {
-            if (isFilledRoute(route)) {
-              const [pageName, pagePath] = route as string[];
-
-              accumulator.push(
-                <li>
-                  <a href={pagePath}>{pageName}</a>
-                </li>,
-              );
-            }
-
-            return accumulator;
-          }, [])
-        }
-      </ul>
-    )
-  }
+  </div>
 </nav>
 
 <style>
@@ -136,11 +138,7 @@ function isFilledRoute(route: any[]): boolean {
     switchNavigation instanceof HTMLElement &&
     navigationLinks instanceof HTMLElement
   ) {
-    const dropdownNavbar = setupDropdownNavbar(
-      switchNavigation,
-      navigationLinks,
-      navbar,
-    );
+    const dropdownNavbar = setupDropdownNavbar(switchNavigation, navigationLinks, navbar);
 
     // This function must be executed at the very beginning
     dropdownNavbar();

@@ -32,22 +32,28 @@ const {
 
 <BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
   <main>
-    <h1>{title}</h1>
-    <TableOfContent headings={headings} />
-    <Content />
+    <div class="content-centered">
+      <h1>{title}</h1>
+      <TableOfContent headings={headings} />
+      <Content />
+    </div>
   </main>
   <aside class="postAuthor">
-    <h2>About the author</h2>
-    <h3>{name}</h3>
-    <h4>{label}</h4>
-    <p>{description}</p>
-    <a href={linkedIn}>Read more in LinkedIn</a>
+    <div class="content-centered">
+      <h2>About the author</h2>
+      <h3>{name}</h3>
+      <h4>{label}</h4>
+      <p>{description}</p>
+      <a href={linkedIn}>Read more in LinkedIn</a>
+    </div>
   </aside>
   {
     !!filteredPosts.length && (
       <aside class="relatedPost">
-        <h2>You might also like</h2>
-        <Feed posts={filteredPosts} />
+        <div class="content-centered">
+          <h2>You might also like</h2>
+          <Feed posts={filteredPosts} />
+        </div>
       </aside>
     )
   }

@@ -1,0 +1,6 @@
+/* Center content to improve legibility */
+.content-centered {
+  margin: auto;
+  max-width: 75ch;
+  padding-inline: 8px;
+}
