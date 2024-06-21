@@ -8,6 +8,7 @@ seoDescription: >-
 relatedPosts:
   - resources/mockup-01
 author: alvaro
+cover: post-cover/automated-factory
 ---
 
 This article explores the latest trends in the adoption of Industrial Internet of Things

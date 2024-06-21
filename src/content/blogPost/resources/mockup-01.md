@@ -8,6 +8,7 @@ seoDescription: >-
 relatedPosts:
   - resources/mockup-02
 author: pablo
+cover: post-cover/automated-factory
 ---
 
 This article delves into advanced programming techniques specifically for IIoT

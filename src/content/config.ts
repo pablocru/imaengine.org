@@ -29,7 +29,8 @@ export const collections = {
       name: z.string(),
       label: z.string(),
       description: z.string(),
-      linkedIn: z.string().url()
+      linkedIn: z.string().url(),
+      profilePicture: reference("image")
     })
   }),
   blogPost: defineCollection({
@@ -37,11 +38,19 @@ export const collections = {
     schema: z.object({
       relatedPosts: z.array(reference("blogPost")).default([]),
       isDraft: z.boolean().default(true),
-      author: reference("author")
+      author: reference("author"),
+      cover: reference("image")
     }).and(pageSchema)
   }),
   blogCategory: defineCollection({
     type: "content",
     schema: pageSchema
   }),
+  image: defineCollection({
+    type: "data",
+    schema: ({ image }) => z.object({
+      metadata: image(),
+      alt: z.string()
+    })
+  })
 };
