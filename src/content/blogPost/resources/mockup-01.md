@@ -6,6 +6,7 @@ seoDescription: >-
   Explore advanced programming techniques for IIoT applications. This guide covers best
   practices and tools to enhance your IIoT software development
 relatedPosts:
+  - industries/mockup-06
   - resources/mockup-02
 author: pablo
 cover: post-cover/automated-factory
