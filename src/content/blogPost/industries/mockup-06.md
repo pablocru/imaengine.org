@@ -10,6 +10,7 @@ relatedPosts:
   - resources/mockup-01
 author: alvaro
 cover: post-cover/automated-factory
+pubDate: 2024-06-15
 ---
 
 Interoperability in the Industrial Internet of Things (IIoT) refers to the ability of

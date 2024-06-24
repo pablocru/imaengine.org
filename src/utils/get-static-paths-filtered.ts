@@ -2,7 +2,13 @@ import { getCollection, getEntries } from "astro:content";
 import type { BlogPostCollection, BlogPostEntry, ValidBlogSlug } from "@content/config";
 
 export function filterPostsCondition(post: BlogPostEntry) {
-  return !(import.meta.env.PROD && post.data.isDraft);
+  const { data: { isDraft, pubDate } } = post;
+
+  return !(
+    import.meta.env.PROD &&
+    isDraft &&
+    pubDate instanceof Date
+  );
 }
 
 export async function getBlogCollection() {

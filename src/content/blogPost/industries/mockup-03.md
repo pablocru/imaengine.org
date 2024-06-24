@@ -10,6 +10,7 @@ relatedPosts:
   - industries/mockup-04
 author: alvaro
 cover: post-cover/automated-factory
+pubDate: 2024-06-21
 ---
 
 Robotics technology is playing a crucial role in modern industry, providing significant

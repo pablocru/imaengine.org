@@ -10,6 +10,7 @@ relatedPosts:
   - industries/mockup-03
 author: alvaro
 cover: post-cover/automated-factory
+pubDate: 2024-06-17
 ---
 
 This article explores the latest trends in the adoption of Industrial Internet of Things

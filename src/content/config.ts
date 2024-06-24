@@ -39,7 +39,8 @@ export const collections = {
       relatedPosts: z.array(reference("blogPost")).default([]),
       isDraft: z.boolean().default(true),
       author: reference("author"),
-      cover: reference("image")
+      cover: reference("image"),
+      pubDate: z.date().optional()
     }).and(pageSchema)
   }),
   blogCategory: defineCollection({

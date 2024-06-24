@@ -10,6 +10,7 @@ relatedPosts:
   - industries/mockup-01
 author: pablo
 cover: post-cover/automated-factory
+pubDate: 2024-06-16
 ---
 
 Artificial Intelligence (AI) is increasingly integrated with the Industrial Internet of

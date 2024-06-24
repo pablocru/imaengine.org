@@ -10,6 +10,7 @@ relatedPosts:
   - resources/mockup-06
 author: pablo
 cover: post-cover/automated-factory
+pubDate: 2024-06-20
 ---
 
 Cloud computing plays a crucial role in the Industrial Internet of Things (IIoT), offering

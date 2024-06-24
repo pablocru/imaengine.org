@@ -10,6 +10,7 @@ relatedPosts:
   - industries/mockup-06
 author: alvaro
 cover: post-cover/automated-factory
+pubDate: 2024-06-19
 ---
 
 Integrating Enterprise Resource Planning (ERP) systems with Industrial Internet of Things

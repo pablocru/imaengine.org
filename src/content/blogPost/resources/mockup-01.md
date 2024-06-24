@@ -10,6 +10,7 @@ relatedPosts:
   - resources/mockup-02
 author: pablo
 cover: post-cover/automated-factory
+pubDate: 2024-06-14
 ---
 
 This article delves into advanced programming techniques specifically for IIoT

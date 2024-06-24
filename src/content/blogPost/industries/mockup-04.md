@@ -10,6 +10,7 @@ relatedPosts:
   - industries/mockup-05
 author: alvaro
 cover: post-cover/automated-factory
+pubDate: 2024-06-23
 ---
 
 Predictive maintenance (PdM) is a game-changing approach in industrial operations,

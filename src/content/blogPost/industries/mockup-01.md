@@ -10,6 +10,7 @@ relatedPosts:
   - industries/mockup-02
 author: alvaro
 cover: post-cover/automated-factory
+pubDate: 2024-06-13
 ---
 
 Start with an engaging introduction that outlines the main topic of your article. Briefly

@@ -10,6 +10,7 @@ relatedPosts:
   - resources/mockup-04
 author: pablo
 cover: post-cover/automated-factory
+pubDate: 2024-06-22
 ---
 
 Docker and Kubernetes are powerful tools for managing containers, and their use in

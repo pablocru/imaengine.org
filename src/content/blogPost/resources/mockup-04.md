@@ -10,6 +10,7 @@ relatedPosts:
   - resources/mockup-05
 author: pablo
 cover: post-cover/automated-factory
+pubDate: 2024-06-24
 ---
 
 Python is a versatile programming language widely used in data science for industrial

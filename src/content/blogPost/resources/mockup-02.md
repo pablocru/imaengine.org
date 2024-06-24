@@ -10,6 +10,7 @@ relatedPosts:
   - resources/mockup-03
 author: pablo
 cover: post-cover/automated-factory
+pubDate: 2024-06-18
 ---
 
 Provide a brief introduction to the topic covered in the resource post. Highlight its
