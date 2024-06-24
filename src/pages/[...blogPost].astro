@@ -1,6 +1,7 @@
 ---
 import { getBlogCollection, getBlogEntries } from "@utils/get-static-paths-filtered";
 import { getEntry } from "astro:content";
+import { Picture } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Feed from "@components/Feed.astro";
 import TableOfContent from "@components/TableOfContent/index.astro";
@@ -16,24 +17,42 @@ export async function getStaticPaths() {
 
 const {
   post: {
-    data: { author, relatedPosts, seoDescription, seoTitle, tabTitle, title },
+    data: { author, cover, relatedPosts, seoDescription, seoTitle, tabTitle, title },
     render,
   },
 } = Astro.props;
+
+const {
+  data: { alt: coverAlt, metadata: coverMetadata },
+} = await getEntry(cover);
 
 const { Content, headings } = await render();
 
 const filteredPosts = await getBlogEntries(relatedPosts);
 
 const {
-  data: { description, label, linkedIn, name },
+  data: { description, label, linkedIn, name, profilePicture },
 } = await getEntry(author);
+
+const {
+  data: { alt: profilePictureAlt, metadata: profilePictureMetadata },
+} = await getEntry(profilePicture);
 ---
 
 <BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
   <main>
     <div class="content-centered">
       <h1>{title}</h1>
+      <Picture
+        src={coverMetadata}
+        alt={coverAlt}
+        width={885}
+        widths={[480, 885]}
+        sizes="(max-width: 885px) 100vw, 885px"
+        formats={["avif", "webp"]}
+        loading="eager"
+        class="fit-container"
+      />
       <TableOfContent headings={headings} />
       <Content />
     </div>
@@ -41,6 +60,12 @@ const {
   <aside class="postAuthor">
     <div class="content-centered">
       <h2>About the author</h2>
+      <Picture
+        src={profilePictureMetadata}
+        alt={profilePictureAlt}
+        width={200}
+        formats={["avif", "webp"]}
+      />
       <h3>{name}</h3>
       <h4>{label}</h4>
       <p>{description}</p>

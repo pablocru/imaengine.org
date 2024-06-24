@@ -4,3 +4,9 @@
   max-width: 75ch;
   padding-inline: 8px;
 }
+
+/* Make image fit container while preserving aspect ratio */
+img.fit-container {
+  width: 100%;
+  height: auto;
+}
