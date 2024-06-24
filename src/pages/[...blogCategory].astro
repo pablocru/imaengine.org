@@ -1,7 +1,10 @@
 ---
+import { filterPostsCondition } from "@utils/get-static-paths-filtered";
 import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import UniversalFeed from "@components/UniversalFeed.astro";
+import Card from "@components/Card.astro";
+import Feed from "@components/Feed.astro";
+import type { BlogPostEntry } from "@content/config";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blogCategory");
@@ -14,13 +17,49 @@ export async function getStaticPaths() {
 
 const {
   category: {
-    slug,
-    data: { seoDescription, seoTitle, tabTitle, title },
+    slug: category,
+    data: {
+      seoDescription,
+      seoTitle,
+      tabTitle,
+      title,
+      featuredPosts: categoryFeaturedPosts,
+    },
     render,
   },
 } = Astro.props;
 
 const { Content } = await render();
+
+const categoryPosts = await getCollection(
+  "blogPost",
+  (entry) =>
+    filterPostsCondition(entry) && (category ? entry.slug.startsWith(category) : true),
+);
+
+categoryPosts.sort(
+  ({ data: { pubDate: prevPost } }, { data: { pubDate: nextPost } }) =>
+    /*
+        In order to sort by date in descending order (from latest to oldest) you must
+        subtract the next post date minus the previous post date.
+      */
+    (nextPost ? nextPost.getTime() : 0) - (prevPost ? prevPost.getTime() : 0),
+);
+
+const lastPublishedPost = categoryPosts.shift();
+
+const [featuredPosts, posts] = categoryPosts.reduce(
+  (accumulator, post) => {
+    accumulator[
+      categoryFeaturedPosts.some((featuredPost) => featuredPost.slug === post.slug)
+        ? 0
+        : 1
+    ].push(post);
+
+    return accumulator;
+  },
+  [[], []] as BlogPostEntry[][],
+);
 ---
 
 <BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
@@ -28,7 +67,30 @@ const { Content } = await render();
     <div class="content-centered">
       <h1>{title}</h1>
       <Content />
-      <UniversalFeed category={slug} />
+      {
+        !!lastPublishedPost && (
+          <section>
+            <h2>Last published post</h2>
+            <Card post={lastPublishedPost} />
+          </section>
+        )
+      }
+      {
+        !!featuredPosts.length && (
+          <section>
+            <h2>Featured posts</h2>
+            <Feed posts={featuredPosts} />
+          </section>
+        )
+      }
+      {
+        !!posts.length && (
+          <section>
+            <h2>Latest published posts</h2>
+            <Feed posts={posts} />
+          </section>
+        )
+      }
     </div>
   </main>
 </BaseLayout>
