@@ -36,16 +36,7 @@ const categoryPosts = await getCollection(
     filterPostsCondition(entry) && (category ? entry.slug.startsWith(category) : true),
 );
 
-categoryPosts.sort(
-  ({ data: { pubDate: prevPost } }, { data: { pubDate: nextPost } }) =>
-    /*
-        In order to sort by date in descending order (from latest to oldest) you must
-        subtract the next post date minus the previous post date.
-      */
-    (nextPost ? nextPost.getTime() : 0) - (prevPost ? prevPost.getTime() : 0),
-);
-
-const [featuredPosts, posts] = categoryPosts.reduce(
+const [featuredPosts, latestPosts] = categoryPosts.reduce(
   (accumulator, post) => {
     accumulator[
       categoryFeaturedPosts.some((featuredPost) => featuredPost.slug === post.slug)
@@ -56,6 +47,15 @@ const [featuredPosts, posts] = categoryPosts.reduce(
     return accumulator;
   },
   [[], []] as BlogPostEntry[][],
+);
+
+latestPosts.sort(
+  ({ data: { pubDate: prevPost } }, { data: { pubDate: nextPost } }) =>
+    /*
+        In order to sort by date in descending order (from latest to oldest) you must
+        subtract the next post date minus the previous post date.
+      */
+    (nextPost ? nextPost.getTime() : 0) - (prevPost ? prevPost.getTime() : 0),
 );
 ---
 
@@ -73,10 +73,10 @@ const [featuredPosts, posts] = categoryPosts.reduce(
         )
       }
       {
-        !!posts.length && (
+        !!latestPosts.length && (
           <section>
             <h2>Latest published posts</h2>
-            <Feed posts={posts} />
+            <Feed posts={latestPosts} />
           </section>
         )
       }
