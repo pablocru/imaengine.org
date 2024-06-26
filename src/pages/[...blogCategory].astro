@@ -49,14 +49,15 @@ const [featuredPosts, latestPosts] = categoryPosts.reduce(
   [[], []] as BlogPostEntry[][],
 );
 
-latestPosts.sort(
-  ({ data: { pubDate: prevPost } }, { data: { pubDate: nextPost } }) =>
-    /*
-        In order to sort by date in descending order (from latest to oldest) you must
-        subtract the next post date minus the previous post date.
-      */
-    (nextPost ? nextPost.getTime() : 0) - (prevPost ? prevPost.getTime() : 0),
-);
+latestPosts.sort(({ data: { pubDate: prevPost } }, { data: { pubDate: nextPost } }) => {
+  /**
+      In order to sort by date in descending order (from latest to oldest) you must
+      subtract the next post date minus the previous post date.
+    */
+  const getTimestamp = (postDate?: Date) => (postDate ? postDate.getTime() : 0);
+
+  return getTimestamp(nextPost) - getTimestamp(prevPost);
+});
 ---
 
 <BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
