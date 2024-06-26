@@ -1,0 +1,23 @@
+---
+/** Inspired by:
+ * - https://github.com/withastro/astro/tree/main/examples/blog
+ */
+
+interface Props {
+  date: Date;
+  dateStyle?: "long" | "full" | "medium" | "short";
+  locales?: Intl.LocalesArgument;
+}
+
+const { date, dateStyle = "long", locales = "en-UK" } = Astro.props;
+---
+
+<time datetime={date.toISOString()}>
+  {
+    /*
+      Display the date in a long format and Universal Time Coordinated (UTC),
+      ensuring consistency and neutrality across different time zones.
+    */
+    date.toLocaleDateString(locales, { dateStyle, timeZone: "UTC" })
+  }
+</time>
