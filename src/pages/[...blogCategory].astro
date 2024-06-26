@@ -2,7 +2,6 @@
 import { filterPostsCondition } from "@utils/get-static-paths-filtered";
 import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import Card from "@components/Card.astro";
 import Feed from "@components/Feed.astro";
 import type { BlogPostEntry } from "@content/config";
 
@@ -46,8 +45,6 @@ categoryPosts.sort(
     (nextPost ? nextPost.getTime() : 0) - (prevPost ? prevPost.getTime() : 0),
 );
 
-const lastPublishedPost = categoryPosts.shift();
-
 const [featuredPosts, posts] = categoryPosts.reduce(
   (accumulator, post) => {
     accumulator[
@@ -67,14 +64,6 @@ const [featuredPosts, posts] = categoryPosts.reduce(
     <div class="content-centered">
       <h1>{title}</h1>
       <Content />
-      {
-        !!lastPublishedPost && (
-          <section>
-            <h2>Last published post</h2>
-            <Card post={lastPublishedPost} />
-          </section>
-        )
-      }
       {
         !!featuredPosts.length && (
           <section>
