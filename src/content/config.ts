@@ -7,10 +7,10 @@ import {
 } from "astro:content";
 
 const pageSchema = z.object({
-  title: z.string(),
-  tabTitle: z.string(),
-  seoTitle: z.string().min(30).max(60),
   seoDescription: z.string().min(60).max(155),
+  seoTitle: z.string().min(30).max(60),
+  tabTitle: z.string(),
+  title: z.string(),
 });
 
 export type BlogPostCollection = "blogPost";
@@ -26,21 +26,21 @@ export const collections = {
   author: defineCollection({
     type: "data",
     schema: z.object({
-      name: z.string(),
-      label: z.string(),
       description: z.string(),
+      label: z.string(),
       linkedIn: z.string().url(),
-      profilePicture: reference("image")
+      name: z.string(),
+      profilePicture: reference("image"),
     })
   }),
   blogPost: defineCollection({
     type: "content",
     schema: z.object({
-      relatedPosts: z.array(reference("blogPost")).max(2).default([]),
-      isDraft: z.boolean().default(true),
       author: reference("author"),
       cover: reference("image"),
-      pubDate: z.date().optional()
+      isDraft: z.boolean().default(true),
+      pubDate: z.date().optional(),
+      relatedPosts: z.array(reference("blogPost")).max(2).default([]),
     }).and(pageSchema)
   }),
   blogCategory: defineCollection({
@@ -52,8 +52,8 @@ export const collections = {
   image: defineCollection({
     type: "data",
     schema: ({ image }) => z.object({
+      alt: z.string(),
       metadata: image(),
-      alt: z.string()
     })
   })
 };
