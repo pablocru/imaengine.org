@@ -36,7 +36,7 @@ export const collections = {
   blogPost: defineCollection({
     type: "content",
     schema: z.object({
-      relatedPosts: z.array(reference("blogPost")).default([]),
+      relatedPosts: z.array(reference("blogPost")).max(2).default([]),
       isDraft: z.boolean().default(true),
       author: reference("author"),
       cover: reference("image"),
