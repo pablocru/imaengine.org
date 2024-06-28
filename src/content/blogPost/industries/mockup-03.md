@@ -1,6 +1,9 @@
 ---
 title: The Role of Robotics in Modern Industry
 tabTitle: Robotics in Industry | Industrial Insights
+cardTitle: The Role of Robotics in Modern Industry
+cardDescription: >-
+  Discover the impact on industrial processes when robotics is being applied
 seoTitle: The Role of Robotics in Modern Industry
 seoDescription: >-
   Discover how robotics is reshaping the industrial sector, enhancing efficiency, and

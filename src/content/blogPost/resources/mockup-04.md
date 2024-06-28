@@ -1,6 +1,9 @@
 ---
 title: Python for Data Science in Industrial Applications
 tabTitle: Python in Industry
+cardTitle: Python for Data Science applied to Industry
+cardDescription: >-
+  Leverage your Industrial Applications by implementing Python-based predictive analytics
 seoTitle: Python for Data Science in Industry
 seoDescription: >-
   Explore how Python is utilized in industrial data science, from predictive analytics to

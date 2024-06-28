@@ -1,6 +1,9 @@
 ---
 title: The Importance of Interoperability in IIoT
 tabTitle: Interoperability in IIoT
+cardTitle: Interoperability in IIoT
+cardDescription: >-
+  Explore how to enhance system integration in industrial applications
 seoTitle: Interoperability in IIoT for Industry
 seoDescription: >-
   Discover why interoperability is crucial in IIoT deployments for industrial applications

@@ -1,6 +1,9 @@
 ---
 title: Implementing Cloud Solutions for Industrial IoT
 tabTitle: Cloud Solutions for IIoT
+cardTitle: Cloud Solutions for IIoT
+cardDescription: >-
+  Enhance Industrial IoT systems and analytics with scalable solutions for data storage
 seoTitle: Cloud Solutions for IIoT Applications
 seoDescription: >-
   Discover how cloud solutions are used to enhance Industrial IoT systems,

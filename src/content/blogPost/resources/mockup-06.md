@@ -1,6 +1,9 @@
 ---
 title: Using AI in IIoT for Industrial Automation
 tabTitle: AI in IIoT Automation
+cardTitle: AI in IIoT Automation
+cardDescription: >-
+  Use AI for industrial automation, enhancing process efficiency and decision-making
 seoTitle: AI in IIoT for Industrial Automation
 seoDescription: >-
   Learn how AI is transforming IIoT for industrial automation, enhancing process

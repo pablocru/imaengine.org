@@ -1,6 +1,9 @@
 ---
 title: Industries Post Template
 tabTitle: Industries Post Template
+cardTitle: Industries Post Template
+cardDescription: >-
+  Sample template to create structured and consistent content for industrial technology
 seoTitle: Industries Post Template | Example for Future Articles
 seoDescription: >-
   This is a sample template for industries blog posts. Use this mockup to create

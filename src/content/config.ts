@@ -37,6 +37,8 @@ export const collections = {
     type: "content",
     schema: z.object({
       author: reference("author"),
+      cardDescription: z.string().max(90),
+      cardTitle: z.string().max(60),
       cover: reference("image"),
       isDraft: z.boolean().default(true),
       pubDate: z.date().optional(),

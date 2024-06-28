@@ -1,6 +1,9 @@
 ---
 title: ERP Integration with IIoT for Industrial Efficiency
 tabTitle: ERP and IIoT Integration
+cardTitle: ERP and IIoT Integration
+cardDescription: >-
+  Explore how to enhance operational efficiency and industrial decision-making
 seoTitle: ERP and IIoT for Industrial Efficiency
 seoDescription: >-
   Explore how integrating ERP systems with IIoT technologies enhances operational

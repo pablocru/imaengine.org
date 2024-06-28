@@ -1,6 +1,9 @@
 ---
 title: Predictive Maintenance in Industrial Applications
 tabTitle: Predictive Maintenance | Industrial Insights
+cardTitle: Predictive Maintenance in Industrial Applications
+cardDescription: >-
+  Learn how to reduce downtime and enhance efficiency in industrial operations
 seoTitle: Predictive Maintenance in Industrial Applications
 seoDescription: >-
   Learn how predictive maintenance is revolutionizing industrial operations by reducing

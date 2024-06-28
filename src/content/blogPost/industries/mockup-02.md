@@ -1,6 +1,9 @@
 ---
 title: Current Trends in IIoT Adoption
 tabTitle: Current Trends in IIoT Adoption
+cardTitle: Current Trends in IIoT Adoption
+cardDescription: >-
+  Cutting-edge technologies and latest trends that transform the industrial landscape
 seoTitle: Current Trends in IIoT Adoption | Industry Insights
 seoDescription: >-
   Explore the latest trends in IIoT adoption across various industries. Understand how

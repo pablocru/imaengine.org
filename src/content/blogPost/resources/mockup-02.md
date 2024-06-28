@@ -1,6 +1,9 @@
 ---
 title: Resources Post Template
 tabTitle: Resources Post Template
+cardTitle: Resources Post Template
+cardDescription: >-
+  Sample template to create structured and consistent content for resources of technology
 seoTitle: Resources Post Template for Software Development
 seoDescription: >-
   This is a sample template for resources blog posts. Use this mockup to create structured

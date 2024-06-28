@@ -1,6 +1,9 @@
 ---
 title: Leveraging Docker and Kubernetes in Industrial Applications
 tabTitle: Docker & Kubernetes in Industry
+cardTitle: Docker & Kubernetes in Industry
+cardDescription: >-
+  Learn how to optimize your containers and enhance efficiency and scalability
 seoTitle: Docker & Kubernetes for Industrial Apps
 seoDescription: >-
   Learn how Docker and Kubernetes can optimize container management in industrial

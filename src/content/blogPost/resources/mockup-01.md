@@ -1,6 +1,9 @@
 ---
 title: Advanced IIoT Programming Techniques
 tabTitle: Advanced IIoT Programming Techniques
+cardTitle: Advanced IIoT Programming Techniques
+cardDescription: >-
+  An In-Depth Guide of best practices and tools to enhance your IIoT software development
 seoTitle: Advanced IIoT Programming Techniques | In-Depth Guide
 seoDescription: >-
   Explore advanced programming techniques for IIoT applications. This guide covers best
