@@ -1,0 +1,24 @@
+---
+import { getEntries } from "astro:content";
+import { getEntry } from "astro:content";
+import Feed from "./Feed.astro";
+import type { ValidBlogCategory } from "@content/config";
+
+interface Props {
+  category: ValidBlogCategory;
+}
+
+const { category } = Astro.props;
+
+const {
+  data: { featuredPosts, title, seoDescription },
+} = await getEntry("blogCategory", category);
+
+const featuredPostEntries = await getEntries(featuredPosts);
+---
+
+<article class={category}>
+  <h2>{title}</h2>
+  <p>{seoDescription}</p>
+  {!!featuredPostEntries.length && <Feed posts={featuredPostEntries} />}
+</article>

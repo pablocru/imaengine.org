@@ -1,8 +1,14 @@
 ---
+import BlogCategoryOverview from "@components/BlogCategoryOverview.astro";
 import StaticPageLayout from "@layouts/StaticPageLayout.astro";
-import UniversalFeed from "@components/UniversalFeed.astro";
+import type { ValidBlogCategory } from "@content/config";
+
+const categoryOrder: ValidBlogCategory[] = ["industries", "resources"];
 ---
 
 <StaticPageLayout section="index">
-  <UniversalFeed />
+  {
+    !!categoryOrder.length &&
+      categoryOrder.map((category) => <BlogCategoryOverview category={category} />)
+  }
 </StaticPageLayout>
