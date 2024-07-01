@@ -1,22 +1,85 @@
 ---
-import Card from "./Card.astro";
+import Card, { type CardType } from "./Card.astro";
 import type { BlogPostEntry } from "@content/config";
 
 interface Props {
   posts: BlogPostEntry[];
+  isFeatured?: boolean;
 }
 
-const { posts } = Astro.props;
+const { posts, isFeatured = false } = Astro.props;
+
+const cardType: CardType = isFeatured ? "vertical" : "horizontal";
 ---
 
-<nav>
-  <ul>
-    {
-      posts.map((post) => (
-        <li>
-          <Card post={post} />
-        </li>
-      ))
+{
+  !!posts.length && (
+    <nav class="feed-navigation">
+      <ul class:list={["feed-list", cardType]}>
+        {posts.map((post) => (
+          <li class="feed-item">
+            <Card post={post} cardType={cardType} />
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
+
+<style>
+  nav.feed-navigation {
+    /* @container will modify styles depending on this element's size */
+    container-type: inline-size;
+  }
+
+  .feed-list {
+    /* Reset default list styles */
+    list-style: none;
+    padding-left: 0;
+  }
+
+  /* --- HORIZONTAL CARD (its the default style too) ---------------------------------- */
+  .feed-list .feed-item {
+    padding-block: 2em;
+  }
+
+  /* Display a visual horizontal line between list items */
+  .feed-list {
+    --border-style: 1px solid lightgrey;
+    border-top: var(--border-style);
+    border-bottom: var(--border-style);
+  }
+  .feed-list .feed-item:not(:first-of-type) {
+    border-top: var(--border-style);
+  }
+  /* ---------------------------------------------------------------------------------- */
+
+  /* --- VERTICAL CARD ---------------------------------------------------------------- */
+  @container (min-width: 640px) {
+    /* Reset styles applied to HORIZONTAL CARDs */
+    .feed-list.vertical .feed-item {
+      padding-block: 0;
     }
-  </ul>
-</nav>
+    .feed-list.vertical .feed-item:not(:first-of-type) {
+      border: none;
+    }
+
+    .feed-list.vertical {
+      /*
+        Since the padding of each item has been removed, then the list must use the same
+        padding so that it maintains the same spacing as HORIZONTAL CARD
+      */
+      padding-block: 2em;
+
+      /*
+        Display cards in a grid. If they are bigger than 300px,
+        then they will be moved to the next row
+      */
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      column-gap: 2em;
+      row-gap: 3em;
+    }
+  }
+  /* ---------------------------------------------------------------------------------- */
+</style>

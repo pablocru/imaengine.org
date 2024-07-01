@@ -69,7 +69,7 @@ latestPosts.sort(({ data: { pubDate: prevPost } }, { data: { pubDate: nextPost }
         !!featuredPosts.length && (
           <section>
             <h2>Featured posts</h2>
-            <Feed posts={featuredPosts} />
+            <Feed posts={featuredPosts} isFeatured />
           </section>
         )
       }
