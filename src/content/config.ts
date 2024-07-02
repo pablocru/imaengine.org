@@ -40,7 +40,7 @@ export const collections = {
       cardDescription: z.string().max(90),
       cardTitle: z.string().max(60),
       cover: reference("image"),
-      isDraft: z.boolean().default(true),
+      isReady: z.boolean().default(false),
       pubDate: z.date().default(new Date(new Date().getTime() + 8.64e+7)),
       relatedPosts: z.array(reference("blogPost")).max(2).default([]),
     }).and(pageSchema)
