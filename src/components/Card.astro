@@ -101,6 +101,12 @@ const {
   }
 
   @supports (display: flex) and (display: grid) {
+    a,
+    .post {
+      /* The card must fit the available space in order to stretch Post Overview */
+      height: 100%;
+    }
+
     .post * {
       /* Remove margins because spaces are managed by the Gap property */
       margin: 0;
@@ -123,7 +129,7 @@ const {
     .post {
       /* By default it creates a single column grid */
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-rows: auto auto 1fr auto;
       grid-template-areas:
         "author"
         "cover"
@@ -156,6 +162,7 @@ const {
     @container (min-width: 676px) {
       .post.horizontal {
         grid-template-columns: 2fr 1fr;
+        grid-template-rows: unset;
         grid-template-areas:
           "author cover"
           "overview cover"
