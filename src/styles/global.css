@@ -1,8 +1,13 @@
 /* Center content to improve legibility */
-.content-centered {
-  margin: auto;
-  max-width: 75ch;
-  padding-inline: 8px;
+.large-layout, .small-layout {
+  margin-inline: auto;
+  padding-inline: 10px;
+}
+.large-layout {
+  max-width: 90ch;
+}
+.small-layout {
+  max-width: 60ch;
 }
 
 /* Make image fit container while preserving aspect ratio */
