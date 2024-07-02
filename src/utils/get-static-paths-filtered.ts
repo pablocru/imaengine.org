@@ -4,11 +4,7 @@ import type { BlogPostCollection, BlogPostEntry, ValidBlogSlug } from "@content/
 export function filterPostsCondition(post: BlogPostEntry) {
   const { data: { isDraft, pubDate } } = post;
 
-  return !(
-    import.meta.env.PROD &&
-    isDraft &&
-    pubDate instanceof Date
-  );
+  return import.meta.env.DEV || (!isDraft && pubDate <= new Date());
 }
 
 export async function getBlogCollection() {

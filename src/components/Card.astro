@@ -57,16 +57,12 @@ const {
       </main>
     </aside>
 
-    {
-      !!pubDate && (
-        <aside class="post-publication-date">
-          <p>
-            <Calendar />
-            <FormattedDate date={pubDate} />
-          </p>
-        </aside>
-      )
-    }
+    <aside class="post-publication-date">
+      <p>
+        <Calendar />
+        <FormattedDate date={pubDate} />
+      </p>
+    </aside>
   </article>
 </a>
 

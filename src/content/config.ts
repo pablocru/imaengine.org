@@ -41,7 +41,7 @@ export const collections = {
       cardTitle: z.string().max(60),
       cover: reference("image"),
       isDraft: z.boolean().default(true),
-      pubDate: z.date().optional(),
+      pubDate: z.date().default(new Date(new Date().getTime() + 8.64e+7)),
       relatedPosts: z.array(reference("blogPost")).max(2).default([]),
     }).and(pageSchema)
   }),
