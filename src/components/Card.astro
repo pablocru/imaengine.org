@@ -67,7 +67,8 @@ const {
 </a>
 
 <style>
-  a {
+  /* :any-link -> to prevent different font colors depending on the link state */
+  a:any-link {
     /* Remove styles related with the anchor tag */
     color: inherit;
     text-decoration: none;
