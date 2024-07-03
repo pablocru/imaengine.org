@@ -40,7 +40,7 @@ const {
 
 <BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
   <main>
-    <div class="small-layout">
+    <section id="header" class="large-layout">
       <h1>{title}</h1>
       <Picture
         src={coverMetadata}
@@ -52,11 +52,15 @@ const {
         loading="eager"
         class="fit-container"
       />
+    </section>
+
+    <section id="main-content" class="small-layout">
       <Content />
-    </div>
+    </section>
   </main>
+
   <aside class="postAuthor">
-    <div class="small-layout">
+    <div class="large-layout">
       <h2>About the author</h2>
       <Picture
         src={profilePictureMetadata}
@@ -70,10 +74,11 @@ const {
       <a href={linkedIn}>Read more in LinkedIn</a>
     </div>
   </aside>
+
   {
     !!filteredPosts.length && (
       <aside class="relatedPost">
-        <div class="small-layout">
+        <div class="large-layout">
           <h2>You might also like</h2>
           <Feed posts={filteredPosts} />
         </div>
@@ -81,3 +86,28 @@ const {
     )
   }
 </BaseLayout>
+
+<style>
+  #main-content {
+    /* Leave the same withe space at the end of the post than "post author" section */
+    padding-block: 1em 4em;
+  }
+
+  .postAuthor, .relatedPost {
+    /* Use a different bg-color to visually signal the end of the post */
+    background: var(--contrast-white);
+
+    /* Leave a huge white space between sections */
+    padding-block: 4em;
+  }
+
+  :is(.postAuthor, .relatedPost) h2 {
+    /* Manage white spaces with the padding of each section */
+    margin-top: 0;
+  }
+
+  .relatedPost {
+    /* Create a visual separation between sections */
+    border-top: 1px solid lightgrey;
+  }
+</style>
