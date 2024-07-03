@@ -1,5 +1,5 @@
 ---
-import { getEntries } from "astro:content";
+import { getBlogEntries } from "@utils/get-static-paths-filtered";
 import { getEntry } from "astro:content";
 import Feed from "./Feed.astro";
 import type { ValidBlogCategory } from "@content/config";
@@ -14,7 +14,7 @@ const {
   data: { featuredPosts, title, seoDescription },
 } = await getEntry("blogCategory", category);
 
-const featuredPostEntries = await getEntries(featuredPosts);
+const featuredPostEntries = await getBlogEntries(featuredPosts);
 ---
 
 <article class={category}>
