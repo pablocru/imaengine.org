@@ -1,11 +1,14 @@
 /* Center content to improve legibility */
-.large-layout, .small-layout {
+.large-layout,
+.small-layout {
   margin-inline: auto;
   padding-inline: 10px;
 }
+
 .large-layout {
   max-width: 90ch;
 }
+
 .small-layout {
   max-width: 60ch;
 }
@@ -14,4 +17,39 @@
 img.fit-container {
   width: 100%;
   height: auto;
+}
+
+@media screen {
+  :root {
+    /* Palette of Colors */
+    --black: #333;
+    --contrast-white: #eaeaea;
+
+    /* Contrast Ratio source: https://webaim.org/resources/contrastchecker/
+     * - Select link colors mirror the default ones,
+     *   tailored for contrast with the background color White Smoke (#f5f5f5).
+     */
+    --primary: #0052A3;
+    /* 7.04 */
+    --secondary: #7324BC;
+    /* 7.11 */
+    --tertiary: #a80000;
+    /* 7.23 */
+
+    color: var(--black);
+    background-color: whitesmoke;
+  }
+
+  /* Colors applied to anchors depending on their states */
+  a:link {
+    color: var(--primary);
+  }
+
+  a:visited {
+    color: var(--secondary);
+  }
+
+  a:active {
+    color: var(--tertiary);
+  }
 }
