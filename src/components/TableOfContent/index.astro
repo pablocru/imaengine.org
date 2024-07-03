@@ -16,7 +16,9 @@ const tocHeadings = buildTocStructure(headings);
   !!tocHeadings.length && (
     <aside class="tableOfContent">
       <h2>Table of Content</h2>
-      <TocHeadings tocHeadings={tocHeadings} />
+      <nav id="tableOfContent">
+        <TocHeadings tocHeadings={tocHeadings} />
+      </nav>
     </aside>
   )
 }
