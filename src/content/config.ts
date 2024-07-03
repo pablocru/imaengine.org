@@ -48,7 +48,7 @@ export const collections = {
   blogCategory: defineCollection({
     type: "content",
     schema: z.object({
-      featuredPosts: z.array(reference("blogPost")).default([])
+      featuredPosts: z.array(reference("blogPost")).max(3).default([])
     }).and(pageSchema)
   }),
   image: defineCollection({
