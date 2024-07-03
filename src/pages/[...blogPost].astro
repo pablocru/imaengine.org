@@ -25,7 +25,7 @@ const {
   data: { alt: coverAlt, metadata: coverMetadata },
 } = await getEntry(cover);
 
-const { Content, headings } = await render();
+const { Content } = await render();
 
 const filteredPosts = await getBlogEntries(relatedPosts);
 
