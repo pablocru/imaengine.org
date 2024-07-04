@@ -3,7 +3,9 @@ import { getBlogCollection, getBlogEntries } from "@utils/get-static-paths-filte
 import { getEntry } from "astro:content";
 import { Picture } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import Calendar from "@components/icons/Calendar.astro";
 import Feed from "@components/Feed.astro";
+import FormattedDate from "@components/FormattedDate.astro";
 import LinkedInIconLink from "@components/iconLinks/LinkedInIconLink.astro";
 
 export async function getStaticPaths() {
@@ -17,7 +19,16 @@ export async function getStaticPaths() {
 
 const {
   post: {
-    data: { author, cover, relatedPosts, seoDescription, seoTitle, tabTitle, title },
+    data: {
+      author,
+      cover,
+      pubDate,
+      relatedPosts,
+      seoDescription,
+      seoTitle,
+      tabTitle,
+      title,
+    },
     render,
   },
 } = Astro.props;
@@ -43,6 +54,14 @@ const {
   <main>
     <section class="small-layout">
       <h1>{title}</h1>
+
+      <aside id="publication-date">
+        <p>
+          <Calendar />
+          <FormattedDate date={pubDate} />
+        </p>
+      </aside>
+
       <Picture
         src={coverMetadata}
         alt={coverAlt}
@@ -104,6 +123,24 @@ const {
 
     /* Use a different bg-color to visually signal the end of the post */
     background: var(--contrast-white);
+  }
+
+  #publication-date {
+    margin-block: 1em;
+    font-size: smaller;
+
+    /* Place a line before and after publication date */
+    --border-style: 1px solid gray;
+    border-top: var(--border-style);
+    border-bottom: var(--border-style);
+  }
+
+  @supports (display: flex) {
+    /* Place calendar icon and date centered vertically */
+    #publication-date p {
+      display: flex;
+      gap: 0.35em;
+    }
   }
 
   #main-content {
