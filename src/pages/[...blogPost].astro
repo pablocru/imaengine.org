@@ -4,6 +4,7 @@ import { getEntry } from "astro:content";
 import { Picture } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Feed from "@components/Feed.astro";
+import LinkedInIconLink from "@components/iconLinks/LinkedInIconLink.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getBlogCollection();
@@ -71,7 +72,7 @@ const {
       <h3>{name}</h3>
       <h4>{label}</h4>
       <p>{description}</p>
-      <a href={linkedIn}>Read more in LinkedIn</a>
+      <LinkedInIconLink href={linkedIn} />
     </div>
   </aside>
 
@@ -93,7 +94,8 @@ const {
     padding-block: 1em 4em;
   }
 
-  .postAuthor, .relatedPost {
+  .postAuthor,
+  .relatedPost {
     /* Use a different bg-color to visually signal the end of the post */
     background: var(--contrast-white);
 

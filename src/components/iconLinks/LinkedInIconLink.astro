@@ -1,0 +1,25 @@
+---
+import IconLink, { type AnchorAttributes as Props } from "./index.astro";
+import LinkedIn from "../icons/LinkedIn.astro";
+
+const { ...props } = Astro.props;
+---
+
+<IconLink anchorText="LinkedIn" {...props}>
+  <LinkedIn />
+</IconLink>
+
+<style>
+  a:any-link {
+    /* Set a white color regardless of link state */
+    color: whitesmoke;
+  }
+
+  a {
+    /* Use the LinkedIn's blue brand color from: https://brand.linkedin.com/en-us */
+    background-color: #0a66c2;
+
+    /* Remove the default border */
+    border: unset;
+  }
+</style>
