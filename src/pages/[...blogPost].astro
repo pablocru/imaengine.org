@@ -41,7 +41,7 @@ const {
 
 <BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
   <main>
-    <section id="header" class="large-layout">
+    <section class="small-layout">
       <h1>{title}</h1>
       <Picture
         src={coverMetadata}
@@ -53,10 +53,10 @@ const {
         loading="eager"
         class="fit-container"
       />
-    </section>
 
-    <section id="main-content" class="small-layout">
-      <Content />
+      <section id="main-content">
+        <Content />
+      </section>
     </section>
   </main>
 
@@ -89,18 +89,26 @@ const {
 </BaseLayout>
 
 <style>
-  #main-content {
-    /* Leave the same withe space at the end of the post than "post author" section */
-    padding-block: 1em 4em;
+  :root {
+    /* Use the same white space between sections */
+    --section-white-space: 4em;
+  }
+
+  main {
+    padding-bottom: var(--section-white-space);
   }
 
   .postAuthor,
   .relatedPost {
+    padding-block: var(--section-white-space);
+
     /* Use a different bg-color to visually signal the end of the post */
     background: var(--contrast-white);
+  }
 
-    /* Leave a huge white space between sections */
-    padding-block: 4em;
+  #main-content {
+    /* Add some space between the hero image and the main content */
+    padding-top: 0.5em;
   }
 
   :is(.postAuthor, .relatedPost) h2 {
