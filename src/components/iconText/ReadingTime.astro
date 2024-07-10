@@ -1,5 +1,5 @@
 ---
-import Clock from "@components/icons/Clock.astro";
+import ClockIcon from "@components/icon/Clock.astro";
 import IconText from "./index.astro";
 import readingTime from "reading-time";
 
@@ -15,6 +15,6 @@ const duration = "PT" + Math.ceil(minutes) + "M";
 ---
 
 <IconText {...props}>
-  <Clock />
+  <ClockIcon />
   <time datetime={duration}>{text}</time>
 </IconText>

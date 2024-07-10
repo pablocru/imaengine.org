@@ -1,5 +1,5 @@
 ---
-import Menu from "./icons/Menu.astro";
+import MenuIcon from "./icon/Menu.astro";
 
 /**
  * - [0] - Page name
@@ -33,7 +33,7 @@ function isFilledRoute(route: any[]): boolean {
         // The switch button is not needed if there isn't any navigation link
         isFilled && (
           <li class="switch-navigation">
-            <Menu />
+            <MenuIcon />
           </li>
         )
       }

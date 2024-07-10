@@ -1,5 +1,5 @@
 ---
-import Calendar from "@components/icons/Calendar.astro";
+import CalendarIcon from "@components/icon/Calendar.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import IconText from "./index.astro";
 
@@ -11,6 +11,6 @@ const { pubDate, ...props } = Astro.props;
 ---
 
 <IconText {...props}>
-  <Calendar />
+  <CalendarIcon />
   <FormattedDate date={pubDate} />
 </IconText>
