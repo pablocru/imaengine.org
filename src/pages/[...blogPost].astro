@@ -5,8 +5,7 @@ import { Picture } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Feed from "@components/Feed.astro";
 import LinkedInIconLink from "@components/iconLinks/LinkedInIconLink.astro";
-import PublicationDateIconText from "@components/iconTexts/PublicationDateIconText.astro";
-import ReadingTimeIconText from "@components/iconTexts/ReadingTimeIconText.astro";
+import PostMetadata from "@components/PostMetadata.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getBlogCollection();
@@ -56,10 +55,7 @@ const {
     <section class="small-layout">
       <h1>{title}</h1>
 
-      <aside id="post-metadata">
-        <PublicationDateIconText pubDate={pubDate} />
-        <ReadingTimeIconText postBody={body} />
-      </aside>
+      <PostMetadata publicationDate={{ pubDate }} readingTime={{ postBody: body }} />
 
       <Picture
         src={coverMetadata}
@@ -134,7 +130,7 @@ const {
     background: var(--contrast-white);
   }
 
-  #post-metadata {
+  .post-metadata {
     margin-block: 1em;
     font-size: smaller;
 

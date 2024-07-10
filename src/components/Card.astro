@@ -1,8 +1,7 @@
 ---
 import { getEntry } from "astro:content";
 import { Image } from "astro:assets";
-import PublicationDateIconText from "./iconTexts/PublicationDateIconText.astro";
-import ReadingTimeIconText from "./iconTexts/ReadingTimeIconText.astro";
+import PostMetadata from "./PostMetadata.astro";
 import type { BlogPostEntry } from "@content/config";
 
 export type CardType = "vertical" | "horizontal";
@@ -58,10 +57,7 @@ const {
       </main>
     </aside>
 
-    <aside class="post-metadata">
-      <PublicationDateIconText pubDate={pubDate} />
-      <ReadingTimeIconText postBody={body} />
-    </aside>
+    <PostMetadata publicationDate={{ pubDate }} readingTime={{ postBody: body }} />
   </article>
 </a>
 
