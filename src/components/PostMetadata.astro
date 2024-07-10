@@ -6,19 +6,12 @@ import ReadingTimeIconText, {
   type Props as ReadingTimeProps,
 } from "@components/iconTexts/ReadingTimeIconText.astro";
 
-interface Props {
-  publicationDate: PublicationDateProps;
-  readingTime: ReadingTimeProps;
-}
+interface Props extends PublicationDateProps, ReadingTimeProps {}
 
-const {
-  publicationDate: { pubDate, ...publicationDateProps },
-  readingTime: { postBody, ...readingTimeProps },
-  ...props
-} = Astro.props;
+const { postBody, pubDate, ...props } = Astro.props;
 ---
 
 <aside class="post-metadata" {...props}>
-  <PublicationDateIconText pubDate={pubDate} {...publicationDateProps} />
-  <ReadingTimeIconText postBody={postBody} {...readingTimeProps} />
+  <PublicationDateIconText pubDate={pubDate} />
+  <ReadingTimeIconText postBody={postBody} />
 </aside>
