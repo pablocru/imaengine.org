@@ -128,12 +128,12 @@ const {
     .post {
       /* By default it creates a single column grid */
       display: grid;
-      grid-template-rows: auto auto 1fr auto;
+      grid-template-rows: repeat(3, auto) 1fr;
       grid-template-areas:
         "author"
         "cover"
-        "overview"
-        "metadata";
+        "metadata"
+        "overview";
       gap: 1em;
     }
     .post-author {

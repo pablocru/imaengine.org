@@ -12,6 +12,6 @@ const { postBody, pubDate, ...props } = Astro.props;
 ---
 
 <aside class="post-metadata" {...props}>
-  <PublicationDateIconText pubDate={pubDate} />
-  <ReadingTimeIconText postBody={postBody} />
+  <PublicationDateIconText pubDate={pubDate} {...props} />
+  <ReadingTimeIconText postBody={postBody} {...props} />
 </aside>
