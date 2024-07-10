@@ -2,6 +2,7 @@
 import { getEntry } from "astro:content";
 import { Image } from "astro:assets";
 import PublicationDateIconText from "./iconTexts/PublicationDateIconText.astro";
+import ReadingTimeIconText from "./iconTexts/ReadingTimeIconText.astro";
 import type { BlogPostEntry } from "@content/config";
 
 export type CardType = "vertical" | "horizontal";
@@ -13,8 +14,9 @@ interface Props {
 
 const {
   post: {
-    slug,
+    body,
     data: { author, cover, cardDescription, cardTitle, pubDate },
+    slug,
   },
   cardType,
 } = Astro.props;
@@ -56,8 +58,9 @@ const {
       </main>
     </aside>
 
-    <aside class="post-publication-date">
+    <aside class="post-metadata">
       <PublicationDateIconText pubDate={pubDate} />
+      <ReadingTimeIconText postBody={body} />
     </aside>
   </article>
 </a>
@@ -83,7 +86,7 @@ const {
 
   /* Reduce importance in the layout */
   .post-author,
-  .post-publication-date {
+  .post-metadata {
     font-size: smaller;
   }
 
@@ -117,6 +120,14 @@ const {
       gap: 0.5em;
     }
 
+    .post-metadata {
+      /* Place metadata in a row */
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 2em;
+      row-gap: 1em;
+    }
+
     /* --- VERTICAL ------------------------------------------------------------------- */
     .post {
       /* By default it creates a single column grid */
@@ -126,7 +137,7 @@ const {
         "author"
         "cover"
         "overview"
-        "pub-date";
+        "metadata";
       gap: 1em;
     }
     .post-author {
@@ -138,8 +149,8 @@ const {
     .post-overview {
       grid-area: overview;
     }
-    .post-publication-date {
-      grid-area: pub-date;
+    .post-metadata {
+      grid-area: metadata;
     }
     /* -------------------------------------------------------------------------------- */
 
@@ -158,7 +169,7 @@ const {
         grid-template-areas:
           "author cover"
           "overview cover"
-          "pub-date pub-date";
+          "metadata metadata";
       }
     }
     /* -------------------------------------------------------------------------------- */

@@ -1,0 +1,20 @@
+---
+import Clock from "@components/icons/Clock.astro";
+import IconText, { type ParagraphAttributes } from "./index.astro";
+import readingTime from "reading-time";
+
+interface Props extends ParagraphAttributes {
+  postBody: string;
+}
+
+const { postBody, ...props } = Astro.props;
+
+const { minutes, text } = readingTime(postBody);
+
+const duration = "PT" + Math.ceil(minutes) + "M";
+---
+
+<IconText {...props}>
+  <Clock />
+  <time datetime={duration}>{text}</time>
+</IconText>
