@@ -1,0 +1,26 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+export interface ParagraphAttributes extends HTMLAttributes<"p"> {}
+
+interface Props extends ParagraphAttributes {
+  text?: string;
+}
+
+const { text, ...props } = Astro.props;
+---
+
+<p {...props}>
+  <slot />
+  {!!text && <span>{text}</span>}
+</p>
+
+<style>
+  @supports (display: flex) {
+    /* Place icon and text centered vertically */
+    p {
+      display: flex;
+      gap: 0.35em;
+    }
+  }
+</style>

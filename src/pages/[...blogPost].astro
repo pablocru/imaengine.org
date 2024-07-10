@@ -3,10 +3,9 @@ import { getBlogCollection, getBlogEntries } from "@utils/get-static-paths-filte
 import { getEntry } from "astro:content";
 import { Picture } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import Calendar from "@components/icons/Calendar.astro";
 import Feed from "@components/Feed.astro";
-import FormattedDate from "@components/FormattedDate.astro";
 import LinkedInIconLink from "@components/iconLinks/LinkedInIconLink.astro";
+import PublicationDateIconText from "@components/iconTexts/PublicationDateIconText.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getBlogCollection();
@@ -56,10 +55,7 @@ const {
       <h1>{title}</h1>
 
       <aside id="publication-date">
-        <p>
-          <Calendar />
-          <FormattedDate date={pubDate} />
-        </p>
+        <PublicationDateIconText pubDate={pubDate} />
       </aside>
 
       <Picture
@@ -143,14 +139,6 @@ const {
     --border-style: 1px solid gray;
     border-top: var(--border-style);
     border-bottom: var(--border-style);
-  }
-
-  @supports (display: flex) {
-    /* Place calendar icon and date centered vertically */
-    #publication-date p {
-      display: flex;
-      gap: 0.35em;
-    }
   }
 
   #main-content {

@@ -1,8 +1,7 @@
 ---
 import { getEntry } from "astro:content";
 import { Image } from "astro:assets";
-import Calendar from "./icons/Calendar.astro";
-import FormattedDate from "./FormattedDate.astro";
+import PublicationDateIconText from "./iconTexts/PublicationDateIconText.astro";
 import type { BlogPostEntry } from "@content/config";
 
 export type CardType = "vertical" | "horizontal";
@@ -58,10 +57,7 @@ const {
     </aside>
 
     <aside class="post-publication-date">
-      <p>
-        <Calendar />
-        <FormattedDate date={pubDate} />
-      </p>
+      <PublicationDateIconText pubDate={pubDate} />
     </aside>
   </article>
 </a>
@@ -89,11 +85,6 @@ const {
   .post-author,
   .post-publication-date {
     font-size: smaller;
-  }
-
-  .post-publication-date svg {
-    /* Align calendar icon with the date */
-    vertical-align: text-bottom;
   }
 
   .post-author-picture img {
