@@ -80,19 +80,29 @@ const {
   </main>
 
   <aside class="postAuthor">
-    <div class="large-layout">
+    <section class="large-layout">
       <h2>About the author</h2>
-      <Picture
-        src={profilePictureMetadata}
-        alt={profilePictureAlt}
-        width={200}
-        formats={["avif", "webp"]}
-      />
-      <h3>{name}</h3>
-      <h4>{label}</h4>
-      <p>{description}</p>
-      <LinkedInIconLink href={linkedIn} />
-    </div>
+
+      <section class="author-overview">
+        <Picture
+          src={profilePictureMetadata}
+          alt={profilePictureAlt}
+          width={200}
+          formats={["avif", "webp"]}
+          class="author-image"
+        />
+
+        <div class="author-data">
+          <h3>{name}</h3>
+          <h4>{label}</h4>
+          <p>{description}</p>
+        </div>
+
+        <div class="cta">
+          <LinkedInIconLink href={linkedIn} />
+        </div>
+      </section>
+    </section>
   </aside>
 
   {
@@ -151,6 +161,50 @@ const {
   :is(.postAuthor, .relatedPost) h2 {
     /* Manage white spaces with the padding of each section */
     margin-top: 0;
+  }
+
+  @supports (display: grid) and (display: flex) {
+    /* Create a vertical card to display author information */
+    .postAuthor .author-overview {
+      display: grid;
+      grid-template-areas:
+        "picture"
+        "data"
+        "cta";
+      gap: 1em;
+    }
+    .postAuthor .author-image {
+      grid-area: picture;
+    }
+    .postAuthor .author-data {
+      grid-area: data;
+    }
+    .postAuthor .cta {
+      grid-area: cta;
+    }
+
+    /* Remove margins to manage white spaces with the grid gap */
+    .postAuthor .author-data p {
+      margin-bottom: 0;
+    }
+    .postAuthor :is(h3, h4) {
+      margin: 0;
+    }
+
+    /* Styles applied on bigger screens */
+    @media screen and (min-width: 580px) {
+      /* Place card in a horizontal layout */
+      .postAuthor .author-overview {
+        grid-template-areas:
+          "picture data"
+          "cta .";
+      }
+      /* Center LinkedIn button depending on the image width */
+      .postAuthor .cta {
+        display: flex;
+        justify-content: center;
+      }
+    }
   }
 
   .relatedPost {
