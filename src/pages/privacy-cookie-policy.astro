@@ -1,0 +1,65 @@
+---
+import { getEntry } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const title = "Privacy and Cookie Policy";
+
+const {
+  data: { email },
+} = await getEntry("siteInformation", "index");
+---
+
+<BaseLayout tabTitle={title}>
+  <main class="small-layout">
+    <h1 id="privacy-cookie-policy">{title}</h1>
+
+    <section id="general-information">
+      <h2>General Information</h2>
+      <p>
+        For all relevant general information regarding this website, including ownership
+        details and contact information, please refer to the
+        <a href="/legal-notice">Legal Notice and General Terms of Use</a> section.
+      </p>
+    </section>
+
+    <section id="no-data-collection">
+      <h2>No Data Collection Statement</h2>
+      <p>
+        In compliance with Regulation (EU) 2016/679 of the European Parliament and of the
+        Council (GDPR) and the Organic Law 3/2018 on the Protection of Personal Data and
+        guarantee of digital rights (LOPDGDD), Users are informed of the following:
+      </p>
+      <ul>
+        <li>
+          <p>
+            <strong>No Data Collection</strong>: This blog does not collect personal data
+            from its users, as no contact forms, comment sections, or other
+            functionalities requiring the input of personal data are used.
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>No Use of Cookies</strong>: This blog does not use cookies or other
+            tracking technologies to collect information from users.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="amendments">
+      <h2>Amendments</h2>
+      <p>
+        This policy may be updated if new functionalities requiring personal data
+        collection are implemented in the future. Users will be informed of any relevant
+        changes to this policy.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        For any questions related to this privacy policy, please contact us at {email}.
+      </p>
+    </section>
+  </main>
+</BaseLayout>

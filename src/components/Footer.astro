@@ -1,0 +1,44 @@
+<footer>
+  <div class="large-layout">
+    <aside class="legal-texts">
+      <nav id="legal-text-links">
+        <ul>
+          <li>
+            <a href="/legal-notice">Legal notice</a>
+          </li>
+          <li>
+            <a href="/privacy-cookie-policy">Privacy & Cookie policy</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+  </div>
+</footer>
+
+<style>
+  footer {
+    /* Increase white space that the beginning and end */
+    padding-block: 2em;
+
+    /* Display a simple shadow to separate footer visually */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .legal-texts {
+    /* Reduce importance */
+    font-size: smaller;
+  }
+
+  @supports (display: flex) {
+    .legal-texts ul {
+      /* Remove default list styles */
+      padding: 0;
+      list-style: none;
+
+      /* Place items in a single line */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+  }
+</style>

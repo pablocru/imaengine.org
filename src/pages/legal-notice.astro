@@ -1,0 +1,304 @@
+---
+import { getEntry } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const title = "Legal Notice and General Terms of Use";
+
+const {
+  data: { companyName, email, nif },
+} = await getEntry("siteInformation", "index");
+---
+
+<BaseLayout tabTitle={title}>
+  <main class="small-layout">
+    <h1 id="legal-notice">{title}</h1>
+
+    <section id="general-information">
+      <h2>General Information</h2>
+      <p>
+        In compliance with the duty of information provided in Law 34/2002 on Services of
+        the Information Society and Electronic Commerce (LSSI-CE) of
+        <time datetime="2002/07/11">July 11</time>, the following general information
+        about this website is provided:
+      </p>
+      <ul>
+        <li>
+          <strong>Website owner</strong>: <span translate="no" set:text={companyName} />
+        </li>
+        <li><strong>NIF</strong>: {nif}</li>
+        <li><strong>Email</strong>: {email}</li>
+      </ul>
+    </section>
+
+    <section id="general-terms-condition-use">
+      <h2>General Terms and Conditions of Use</h2>
+
+      <section id="website">
+        <h3>Purpose of the Terms: The Website</h3>
+        <p>
+          The purpose of these General Terms and Conditions of Use (hereinafter, the
+          Terms) is to regulate the access and use of the Website. For the purposes of
+          these Terms, the Website shall be understood as: the external appearance of the
+          screen interfaces, both statically and dynamically, that is, the navigation
+          tree; and all elements integrated into the screen interfaces and the navigation
+          tree (hereinafter, the Content) and all those online services or resources that
+          may be offered to Users (hereinafter, the Services).
+        </p>
+        <p>
+          <span translate="no" set:text={companyName} /> reserves the right to modify, at any
+          time and without prior notice, the presentation and configuration of the Website
+          and the Content and Services that may be incorporated therein. The User acknowledges
+          and accepts that <span translate="no" set:text={companyName} /> may interrupt, deactivate,
+          and/or cancel any of these elements that are integrated into the Website or access
+          to them at any time.
+        </p>
+        <p>
+          The access to the Website by the User is free and generally does not require a
+          subscription or registration. The User shall bear the cost of connection through
+          the telecommunications network provided by the access provider contracted by the
+          User.
+        </p>
+        <p>
+          The use of any of the Content or Services of the Website may be made through the
+          subscription or prior registration of the User.
+        </p>
+      </section>
+
+      <section id="user">
+        <h3>The User</h3>
+        <p>
+          The access, browsing, and use of the Website, as well as the spaces enabled for
+          interaction among Users, and the User and
+          <span translate="no" set:text={companyName} />, such as comments and/or blogging
+          spaces, confer the status of User, for which all the Terms established here are
+          accepted from the moment the Website is accessed, without prejudice to the
+          application of the corresponding mandatory legal regulations as appropriate.
+          Given the relevance of the foregoing, the User is recommended to read them each
+          time they visit the Website.
+        </p>
+        <p>
+          The Website of <span translate="no" set:text={companyName} /> provides a great diversity
+          of information, services, and data. The User assumes responsibility for making proper
+          use of the Website. This responsibility shall extend to:
+        </p>
+        <ul>
+          <li>
+            <p>
+              The use of the information, Content, and/or Services and data offered by
+              <span translate="no" set:text={companyName} /> without contravening the provisions
+              of these Terms, the Law, morality, or public order, or that in any other way
+              may cause injury to the rights of third parties or the same operation of the
+              Website.
+            </p>
+          </li>
+          <li>
+            <p>
+              The veracity and legality of the information provided by the User in the
+              forms issued by <span translate="no" set:text={companyName} /> for access to
+              certain Content or Services offered by the Website. In any case, the User will
+              notify immediately
+              <span translate="no" set:text={companyName} /> about any fact that allows the
+              misuse of the information registered in such forms, such as, but not limited
+              to, theft, loss, or unauthorized access to identifiers and/or passwords, in order
+              to proceed to their immediate cancellation.
+            </p>
+          </li>
+        </ul>
+        <p>
+          <span translate="no" set:text={companyName} /> reserves the right to withdraw all
+          comments and contributions that violate the law, the respect for the dignity of the
+          person, that are discriminatory, xenophobic, racist, pornographic, spam, that threaten
+          youth or childhood, public order or security, or that, in its opinion, are not suitable
+          for publication.
+        </p>
+        <p>
+          In any case, <span translate="no" set:text={companyName} /> will not be responsible
+          for the opinions expressed by Users through comments or other blogging or participation
+          tools that may be available.
+        </p>
+        <p>
+          Mere access to this Website does not imply the establishment of any type of
+          commercial relationship between <span translate="no" set:text={companyName} />
+          and the User.
+        </p>
+        <p>
+          The User declares to be of legal age and to have the sufficient legal capacity
+          to be bound by these Terms. Therefore, this Website of
+          <span translate="no" set:text={companyName} /> is not directed to minors.
+          <span translate="no" set:text={companyName} /> declines any responsibility for the
+          breach of this requirement.
+        </p>
+        <p>
+          The Website is primarily aimed at Users residing in Spain.
+          <span translate="no" set:text={companyName} /> does not ensure that the Website complies
+          with the legislation of other countries, either totally or partially. If the User
+          resides or is domiciled in another place and decides to access and/or browse the
+          Website, they will do so at their own responsibility, and they must ensure that such
+          access and browsing comply with the local legislation that is applicable to them,
+          with <span translate="no" set:text={companyName} /> not assuming any responsibility
+          that may derive from such access.
+        </p>
+      </section>
+    </section>
+
+    <section id="exclusion-guarantees">
+      <h2>
+        Access and Navigation on the Website: Exclusion of Guarantees and Responsibility
+      </h2>
+      <p>
+        <span translate="no" set:text={companyName} /> does not guarantee the continuity, availability,
+        and usefulness of the Website, nor of the Content or Services.
+        <span translate="no" set:text={companyName} /> will make every effort for the proper
+        functioning of the Website, however, it does not take responsibility or guarantee that
+        access to this Website will not be uninterrupted or that it will be free of error.
+      </p>
+      <p>
+        Neither does it take responsibility or guarantee that the content or software that
+        can be accessed through this Website is free of error or causes damage to the
+        User&apos;s computer system (software and hardware). In no case shall
+        <span translate="no" set:text={companyName} /> be responsible for losses, damages,
+        or harm of any kind arising from the access, navigation, and use of the Website, including,
+        but not limited to, those caused to computer systems or those caused by the introduction
+        of viruses.
+      </p>
+      <p>
+        <span translate="no" set:text={companyName} /> is also not responsible for damages
+        that may be caused to users by improper use of this Website. In particular, it is not
+        responsible in any way for drops, interruptions, lack, or defect of telecommunications
+        that may occur.
+      </p>
+    </section>
+
+    <section id="linking-policy">
+      <h2>Linking Policy</h2>
+      <p>
+        It is informed that the Website of <span translate="no" set:text={companyName} /> may
+        put or may make available to Users means of link (such as, among others, links, banners,
+        buttons), directories, and search engines that allow Users to access websites belonging
+        to and/or managed by third parties.
+      </p>
+      <p>
+        The installation of these links, directories, and search engines on the Website is
+        intended to facilitate Users the search and access to information available on the
+        Internet, without it being considered a suggestion, recommendation, or invitation
+        to visit them.
+      </p>
+      <p>
+        <span translate="no" set:text={companyName} /> does not offer or market by itself or
+        through third parties the products and/or services available on such linked sites.
+      </p>
+      <p>
+        Likewise, it will not guarantee the technical availability, accuracy,
+        truthfulness, validity, or legality of sites outside its property that can be
+        accessed through the links.
+      </p>
+      <p>
+        <span translate="no" set:text={companyName} /> in no case will review or control the
+        content of other websites, as well as does not approve, examine, or own the products
+        and services, content, files, and any other material existing in the aforementioned
+        linked sites.
+      </p>
+      <p>
+        <span translate="no" set:text={companyName} /> does not assume any responsibility for
+        damages that may occur due to the access, use, quality, or legality of the contents,
+        communications, opinions, products, and services of websites not managed by <span
+          translate="no"
+          set:text={companyName}
+        /> and that are linked in this Website.
+      </p>
+      <p>
+        The User or third party who makes a hyperlink from a web page of another,
+        different, website to the Website of <span
+          translate="no"
+          set:text={companyName}
+        /> must know that:
+      </p>
+      <ul>
+        <li>
+          <p>
+            The reproduction —totally or partially— of any of the Content and/or Services
+            of the Website without express authorization of
+            <span translate="no" set:text={companyName} /> is not allowed.
+          </p>
+        </li>
+        <li>
+          <p>
+            Neither is any false, inaccurate, or incorrect statement about the Website of
+            <span translate="no" set:text={companyName} />, nor about the Content and/or
+            Services of it allowed.
+          </p>
+        </li>
+        <li>
+          <p>
+            Except for the hyperlink, the website on which such hyperlink is established
+            will not contain any element of this Website, protected as intellectual
+            property by the Spanish legal system, unless expressly authorized by
+            <span translate="no" set:text={companyName} />.
+          </p>
+        </li>
+      </ul>
+      <p>
+        The establishment of the hyperlink will not imply the existence of relations
+        between <span translate="no" set:text={companyName} /> and the owner of the website
+        from which it is made, nor the knowledge and acceptance of
+        <span translate="no" set:text={companyName} /> of the content, services, and/or activities
+        offered on that website, and vice versa.
+      </p>
+    </section>
+
+    <section id="intellectual-industrial-property">
+      <h2>Intellectual and Industrial Property</h2>
+      <p>
+        <span translate="no" set:text={companyName} />, by itself or as an assignee, is
+        the owner of all intellectual and industrial property rights of the Website, as
+        well as the elements contained therein (by way of example, but not limited to,
+        images, sound, audio, video, software, or texts; trademarks or logos, combinations
+        of colors, structure and design, selection of materials used, computer programs
+        necessary for its operation, access, and use, etc.). They will, therefore, be
+        works protected as intellectual property by the Spanish legal system, being
+        applicable both Spanish and Community regulations in this field, as well as the
+        international treaties relating to the matter and signed by Spain.
+      </p>
+      <p>
+        All rights reserved. Under the provisions of the Intellectual Property Law, the
+        reproduction, distribution, and public communication, including its mode of
+        provision, of all or part of the contents of this web page, for commercial
+        purposes, on any support and by any technical means, without the authorization of
+        <span translate="no" set:text={companyName} /> are expressly prohibited.
+      </p>
+      <p>
+        The User agrees to respect the intellectual and industrial property rights owned
+        by <span translate="no" set:text={companyName} />. You can view the elements of
+        the Website or even print them, copy them, and store them on the hard drive of
+        your computer or on any other physical support provided it is solely and
+        exclusively for your personal and private use. The User, however, may not remove,
+        alter, or manipulate any protection device or security system that was installed
+        on the Website.
+      </p>
+      <p>
+        In case the User or third party considers that any of the Contents of the Website
+        involves a violation of the rights of protection of intellectual property, they
+        must immediately notify <span translate="no" set:text={companyName} /> through the
+        contact details in the <a href="#general-information">GENERAL INFORMATION</a> section
+        of this Legal Notice and General Terms of Use.
+      </p>
+    </section>
+
+    <section id="legal-actions">
+      <h2>Legal Actions, Applicable Law, and Jurisdiction</h2>
+      <p>
+        <span translate="no" set:text={companyName} /> reserves the right to present civil
+        or criminal actions it deems necessary for the improper use of the Website and Content,
+        or for the breach of these Conditions.
+      </p>
+      <p>
+        The relationship between the User and
+        <span translate="no" set:text={companyName} /> will be governed by current regulations
+        and applicable in the Spanish territory. Should any dispute arise in relation to the
+        interpretation and/or application of these Conditions, the parties will submit their
+        conflicts to the ordinary jurisdiction submitting to the judges and courts that correspond
+        according to law.
+      </p>
+    </section>
+  </main>
+</BaseLayout>

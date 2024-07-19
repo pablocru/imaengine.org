@@ -57,5 +57,13 @@ export const collections = {
       alt: z.string(),
       metadata: image(),
     })
+  }),
+  siteInformation: defineCollection({
+    type: "data",
+    schema: z.object({
+      companyName: z.string(),
+      email: z.string().email(),
+      nif: z.string(),
+    })
   })
 };
