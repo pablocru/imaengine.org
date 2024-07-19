@@ -58,7 +58,7 @@ latestPosts.sort(({ data: { pubDate: prevPost } }, { data: { pubDate: nextPost }
 });
 ---
 
-<BaseLayout seoDescription={seoDescription} seoTitle={seoTitle} tabTitle={tabTitle}>
+<BaseLayout seoTags={{ seoDescription, seoTitle }} tabTitle={tabTitle}>
   <main>
     <div class="large-layout">
       <h1>{title}</h1>
