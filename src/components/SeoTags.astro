@@ -2,14 +2,17 @@
 export type Props = {
   seoDescription: string;
   seoTitle: string;
+  author?: string;
 };
 
-const { seoDescription, seoTitle } = Astro.props;
+const { seoDescription, seoTitle, author } = Astro.props;
 ---
 
 {/* Primary Meta Tags */}
 <meta name="title" content={seoTitle} />
 <meta name="description" content={seoDescription} />
+
+{/* Optional Author tag */ !!author && <meta name="author" content={author} />}
 
 {/* Canonical URL */}
 <link rel="canonical" href={Astro.url} />

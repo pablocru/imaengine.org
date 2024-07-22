@@ -50,7 +50,7 @@ const {
 } = await getEntry(profilePicture);
 ---
 
-<BaseLayout seoTags={{ seoDescription, seoTitle }} tabTitle={tabTitle}>
+<BaseLayout seoTags={{ seoDescription, seoTitle, author: name }} tabTitle={tabTitle}>
   <main>
     <section class="small-layout">
       <h1>{title}</h1>
