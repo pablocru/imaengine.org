@@ -25,6 +25,9 @@ const { tabTitle, seoTags } = Astro.props;
     {/* SEO handler */}
     <SeoHead seoTags={seoTags} />
 
+    {/* Improve crawlers index */}
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
     {/* Identify Astro and its version as the framework used to generate this site */}
     <meta name="generator" content={Astro.generator} />
   </head>
