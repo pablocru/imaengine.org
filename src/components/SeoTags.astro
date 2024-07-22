@@ -1,11 +1,15 @@
 ---
-export type Props = {
-  seoDescription: string;
-  seoTitle: string;
-  author?: string;
-};
+export interface Props {
+  seoTags: {
+    seoDescription: string;
+    seoTitle: string;
+    author?: string;
+  };
+}
 
-const { seoDescription, seoTitle, author } = Astro.props;
+const {
+  seoTags: { seoDescription, seoTitle, author },
+} = Astro.props;
 ---
 
 {/* Primary Meta Tags */}
