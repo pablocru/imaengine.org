@@ -9,12 +9,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.7.0",
+    "@astrojs/check": "^0.8.2",
     "@astrojs/sitemap": "^3.1.6",
     "@fontsource/ibm-plex-mono": "^5.0.13",
     "@fontsource/ibm-plex-sans": "^5.0.20",
     "@fontsource/ibm-plex-serif": "^5.0.13",
-    "astro": "^4.11.5",
+    "astro": "^4.12.2",
     "reading-time": "^1.5.0",
     "sharp": "^0.33.4",
     "typescript": "^5.4.5"
