@@ -4,14 +4,13 @@ import "@styles/global.css";
 import "@styles/reset.css";
 import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
-import SeoTags, { type Props as SeoTagsProps } from "@components/SeoTags.astro";
+import SeoHead, { type Props as SeoHeadProps } from "@components/SeoHead.astro";
 
-interface Props {
+interface Props extends SeoHeadProps {
   tabTitle: string;
-  seoTags?: SeoTagsProps;
 }
 
-const { seoTags, tabTitle } = Astro.props;
+const { tabTitle, seoTags } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,14 +22,8 @@ const { seoTags, tabTitle } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {
-      /* SEO related head tags */
-      seoTags ? (
-        <SeoTags seoDescription={seoTags.seoDescription} seoTitle={seoTags.seoTitle} />
-      ) : (
-        <meta name="robots" content="noindex, nofollow" />
-      )
-    }
+    {/* SEO handler */}
+    <SeoHead seoTags={seoTags} />
 
     {/* Identify Astro and its version as the framework used to generate this site */}
     <meta name="generator" content={Astro.generator} />

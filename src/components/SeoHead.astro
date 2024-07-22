@@ -1,0 +1,19 @@
+---
+import SeoTags, { type Props as SeoTagsProps } from "./SeoTags.astro";
+
+export interface Props {
+  seoTags?: SeoTagsProps;
+}
+
+const { seoTags } = Astro.props;
+---
+
+{
+  seoTags ? (
+    // Create SEO related head tags
+    <SeoTags seoDescription={seoTags.seoDescription} seoTitle={seoTags.seoTitle} />
+  ) : (
+    // Disallow all crawlers to index this page
+    <meta name="robots" content="noindex, nofollow" />
+  )
+}
