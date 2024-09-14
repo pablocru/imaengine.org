@@ -3,7 +3,7 @@ import {
   defineCollection,
   reference,
   type CollectionEntry,
-  type ValidContentEntrySlug
+  type ValidContentEntrySlug,
 } from "astro:content";
 
 const pageSchema = z.object({
@@ -21,7 +21,7 @@ export type ValidBlogCategory = ValidContentEntrySlug<"blogCategory">;
 export const collections = {
   staticPage: defineCollection({
     type: "content",
-    schema: pageSchema
+    schema: pageSchema,
   }),
   author: defineCollection({
     type: "data",
@@ -31,7 +31,7 @@ export const collections = {
       linkedIn: z.string().url(),
       name: z.string(),
       profilePicture: reference("image"),
-    })
+    }),
   }),
   blogPost: defineCollection({
     type: "content",
@@ -43,20 +43,20 @@ export const collections = {
       isReady: z.boolean().default(false),
       pubDate: z.date().default(new Date(new Date().getTime() + 8.64e+7)),
       relatedPosts: z.array(reference("blogPost")).max(2).default([]),
-    }).and(pageSchema)
+    }).and(pageSchema),
   }),
   blogCategory: defineCollection({
     type: "content",
     schema: z.object({
-      featuredPosts: z.array(reference("blogPost")).max(3).default([])
-    }).and(pageSchema)
+      featuredPosts: z.array(reference("blogPost")).max(3).default([]),
+    }).and(pageSchema),
   }),
   image: defineCollection({
     type: "data",
     schema: ({ image }) => z.object({
       alt: z.string(),
       metadata: image(),
-    })
+    }),
   }),
   siteInformation: defineCollection({
     type: "data",
@@ -64,6 +64,6 @@ export const collections = {
       companyName: z.string(),
       email: z.string().email(),
       nif: z.string(),
-    })
-  })
+    }),
+  }),
 };

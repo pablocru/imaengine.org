@@ -12,7 +12,7 @@ export async function getBlogCollection() {
 }
 
 export async function getBlogEntries(
-  postReferences: { collection: BlogPostCollection, slug: ValidBlogSlug }[]
+  postReferences: { collection: BlogPostCollection, slug: ValidBlogSlug }[],
 ) {
   const posts = await getEntries(postReferences);
 

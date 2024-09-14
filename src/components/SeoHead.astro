@@ -1,7 +1,7 @@
 ---
 import SeoTags, { type Props as SeoTagsProps } from "./SeoTags.astro";
 
-export interface Props extends Partial<SeoTagsProps> {}
+export type Props = Partial<SeoTagsProps>
 
 const { seoTags } = Astro.props;
 ---

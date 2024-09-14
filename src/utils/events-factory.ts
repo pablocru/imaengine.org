@@ -7,12 +7,12 @@
 export function setupEventListener(
   element: Node,
   eventType: string,
-  callback: EventListenerOrEventListenerObject
+  callback: EventListenerOrEventListenerObject,
 ) {
   return {
     addEvent: () => element.addEventListener(eventType, callback),
-    removeEvent: () => element.removeEventListener(eventType, callback)
-  }
+    removeEvent: () => element.removeEventListener(eventType, callback),
+  };
 }
 
 /**
@@ -20,6 +20,7 @@ export function setupEventListener(
  * @param callback - Callback that must be executed by the event
  * @returns - A way to create and delete the event
  */
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export function setupClickOutsideEvent(element: Node, callback: Function) {
   return setupEventListener(document, "click", event => {
     const { target } = event;
