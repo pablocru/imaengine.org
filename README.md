@@ -15,6 +15,31 @@ multilineString: >-
   The dash or hyphen symbol (-) removes the new line char (\n) at the end
 ```
 
+## How to properly set up Conditional Rendering in Astro
+
+The AND operator (&&) used in an Astro template will return the actual value of the fist
+hand of the expression if it is falsy. So, for example, if an array called "routes" is
+empty, a 0 will be printed. To avoid that, using the double exclamation mark (!!) will
+cast it to boolean. That is useful because Astro won't print "false" in the UI.
+
+```astro
+---
+const fruitList: string[] = ["apple", "orange", "bananas"];
+---
+
+<>
+  {
+    !!fruitList.length && (
+      <ul>
+        {fruitList.map((fruit) => (
+          <li>{fruit}</li>
+        ))}
+      </ul>
+    )
+  }
+</>
+```
+
 ## Bugs or suggestions
 
 If you found a bug or have a suggestion please don't hesitate to open an
