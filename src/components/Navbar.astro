@@ -5,24 +5,21 @@ import MenuIcon from "./icon/Menu.astro";
  * - [0] - Page name
  * - [1] - Page path
  */
-const routes = [
+const routeList: string[][] = [
   ["Who we are", "/about"],
   ["Industries", "/industries"],
   ["Resources", "/resources"],
 ];
 
-/*
-  The AND operator (&&) used in an Astro template will return the actual value of the fist
-  hand of the expression if it is falsy. So if the array "routes" is empty, a 0 will be
-  printed. To avoid that, using the double exclamation mark (!!) will cast it to boolean.
-  That is useful because Astro won't print "false" in the UI.
-*/
-const isFilled = !!routes.find(isFilledRoute);
-
-/** Checks if a given route's page name and page path are strings with content */
-function isFilledRoute(route: any[]): boolean {
-  return route.every((item) => typeof item === "string" && !!item.trim().length);
+/* Checks if a given route's page name and page path are strings with content */
+function isFilledRouteList(routeList: string[][]): boolean {
+  return Boolean(routeList.length && routeList.find(isFilledRoute));
 }
+function isFilledRoute(route: string[]): boolean {
+  return Boolean(route.length && route.every((routeItem) => routeItem.trim().length));
+}
+
+const isRouteListFilled = isFilledRouteList(routeList);
 ---
 
 <nav id="main-menu">
@@ -31,7 +28,7 @@ function isFilledRoute(route: any[]): boolean {
       <li class="brand"><a href="/" translate="no">Imaengine</a></li>
       {
         // The switch button is not needed if there isn't any navigation link
-        isFilled && (
+        isRouteListFilled && (
           <li class="switch-navigation">
             <MenuIcon />
           </li>
@@ -39,13 +36,13 @@ function isFilledRoute(route: any[]): boolean {
       }
     </ul>
     {
-      isFilled && (
+      isRouteListFilled && (
         <ul class="navigation">
           {
             // Use a reducer to skip any route that doesn't follow the schema
-            routes.reduce((accumulator, route) => {
+            routeList.reduce((accumulator, route) => {
               if (isFilledRoute(route)) {
-                const [pageName, pagePath] = route as string[];
+                const [pageName, pagePath] = route;
 
                 accumulator.push(
                   <li>
