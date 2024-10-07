@@ -1,0 +1,48 @@
+---
+import "@styles/reset.css";
+import "@styles/layout.css";
+import "@styles/alert.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  description =
+    "Website to discuss about the latest technologies about manufacturing.",
+  title,
+} = Astro.props;
+
+const titleSuffix = "Imaengine";
+const finalTitle = title ? title + " - " + titleSuffix : titleSuffix;
+---
+
+<html lang="en">
+  <head>
+    {/* Character encoding */}
+    <meta charset="UTF-8">
+
+    {/* Consistent user experience across different mobile devices */}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {/* Primary SEO Tags */}
+    <title>{finalTitle}</title>
+    <meta name="title" content={finalTitle}/>
+    <meta name="description" content={description}/>
+    <link rel="canonical" href={Astro.url}/>
+
+    {/* Credit to Astro */}
+    <meta name="generator" content={Astro.generator}>
+
+    {/* Favicon */}
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    {/* Tabler Icons: https://tabler.io/icons */}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+  </head>
+
+  <body>
+    <slot/>
+  </body>
+</html>

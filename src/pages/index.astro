@@ -1,0 +1,28 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import IconLinkLinkedIn from "src/components/IconLinkLinkedIn.astro";
+---
+
+<BaseLayout title="Work in progress">
+  <main>
+    <h1>Imaengine</h1>
+
+    <section id="coming-soon" class="alert alert--warning">
+      <h2>Our site is almost here!</h2>
+
+      <p>
+        We're putting the finishing touches on something great. Please check back soon!
+      </p>
+    </section>
+
+    <div class="linkedin-cta">
+      <p>Meanwhile, you can connect with us on <IconLinkLinkedIn/></p>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .linkedin-cta {
+    padding-top: 0.7rem;
+  }
+</style>
